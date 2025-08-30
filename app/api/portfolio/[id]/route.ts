@@ -40,11 +40,12 @@ async function writePortfolioData(data: PortfolioItem[]) {
 // GET - جلب عنصر واحد
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
+    const { id } = context.params
     const items = await readPortfolioData()
-    const item = items.find(item => item.id === params.id)
+    const item = items.find(item => item.id === id)
 
     if (!item) {
       return NextResponse.json(
@@ -66,9 +67,10 @@ export async function GET(
 // PUT - تعديل عنصر (يتطلب تسجيل دخول الأدمن)
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
+    const { id } = context.params
     // التحقق من صحة التوكن
     const auth = request.headers.get('authorization') || ''
     const [, token] = auth.split(' ')
@@ -96,7 +98,7 @@ export async function PUT(
 
     // قراءة البيانات الحالية
     const items = await readPortfolioData()
-    const itemIndex = items.findIndex(item => item.id === params.id)
+    const itemIndex = items.findIndex(item => item.id === id)
 
     if (itemIndex === -1) {
       return NextResponse.json(
@@ -136,9 +138,10 @@ export async function PUT(
 // DELETE - حذف عنصر (يتطلب تسجيل دخول الأدمن)
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
   try {
+    const { id } = context.params
     // التحقق من صحة التوكن
     const auth = request.headers.get('authorization') || ''
     const [, token] = auth.split(' ')
@@ -156,7 +159,7 @@ export async function DELETE(
 
     // قراءة البيانات الحالية
     const items = await readPortfolioData()
-    const itemIndex = items.findIndex(item => item.id === params.id)
+    const itemIndex = items.findIndex(item => item.id === id)
 
     if (itemIndex === -1) {
       return NextResponse.json(
