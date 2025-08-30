@@ -42,8 +42,8 @@ export async function GET(
   request: NextRequest,
   context: { params: { id: string } }
 ) {
+  const { id } = context.params
   try {
-    const { id } = context.params
     const items = await readPortfolioData()
     const item = items.find(item => item.id === id)
 
@@ -69,8 +69,8 @@ export async function PUT(
   request: NextRequest,
   context: { params: { id: string } }
 ) {
+  const { id } = context.params
   try {
-    const { id } = context.params
     // التحقق من صحة التوكن
     const auth = request.headers.get('authorization') || ''
     const [, token] = auth.split(' ')
@@ -140,8 +140,8 @@ export async function DELETE(
   request: NextRequest,
   context: { params: { id: string } }
 ) {
+  const { id } = context.params
   try {
-    const { id } = context.params
     // التحقق من صحة التوكن
     const auth = request.headers.get('authorization') || ''
     const [, token] = auth.split(' ')

@@ -25,7 +25,7 @@ export const hasMaxLength = (text: string, maxLength: number): boolean => {
 
 // التحقق من أن النص يحتوي على أحرف فقط
 export const containsOnlyLetters = (text: string): boolean => {
-  const letterRegex = /^[\p{L}\s]+$/u; // يدعم الأحرف من جميع اللغات
+  const letterRegex = /^[A-Za-z\u0600-\u06FF\s]+$/; // يدعم الأحرف العربية والإنجليزية
   return letterRegex.test(text);
 };
 
@@ -37,7 +37,7 @@ export const containsOnlyNumbers = (text: string): boolean => {
 
 // التحقق من أن النص يحتوي على أحرف وأرقام
 export const containsLettersAndNumbers = (text: string): boolean => {
-  const letterNumberRegex = /^(?=.*[0-9])(?=.*[\p{L}])[\p{L}0-9\s]+$/u;
+  const letterNumberRegex = /^(?=.*[0-9])(?=.*[A-Za-z\u0600-\u06FF])[A-Za-z\u0600-\u06FF0-9\s]+$/;
   return letterNumberRegex.test(text);
 };
 
