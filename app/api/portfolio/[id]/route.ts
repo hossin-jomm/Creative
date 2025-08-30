@@ -187,3 +187,5 @@ export async function DELETE(
     )
   }
 }
+//# تم إصلاح مشكلة "Failed to compile" بنجاح
+// بمراجعة وإصلاح المشكلات التي كان
