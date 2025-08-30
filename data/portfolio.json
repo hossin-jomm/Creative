@@ -1,0 +1,52 @@
+[
+  {
+    "id": "1756066382758",
+    "title": "تصميم سوشال ميديا",
+    "category": "سوشال ميديا",
+    "type": "image",
+    "url": "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/39897655404439.5982d095c1fb6.png",
+    "thumbnail": "",
+    "description": "اسلييسابسييس اسبسي لاسبيسبس  سلبسش",
+    "createdAt": "2025-08-24T20:13:02.758Z"
+  },
+  {
+    "id": "1",
+    "title": "حملة إعلانية لمطعم فاخر",
+    "category": "إعلانات",
+    "type": "image",
+    "url": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
+    "thumbnail": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=300&fit=crop",
+    "description": "حملة إعلانية متكاملة لمطعم فاخر تضمنت إدارة السوشال ميديا والإعلانات المدفوعة",
+    "createdAt": "2024-01-15T10:00:00Z"
+  },
+  {
+    "id": "2",
+    "title": "فيديو موشن جرافيك لشركة تقنية",
+    "category": "موشن جرافيك",
+    "type": "video",
+    "url": "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
+    "thumbnail": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
+    "description": "فيديو موشن جرافيك احترافي لشرح خدمات شركة تقنية ناشئة",
+    "createdAt": "2024-01-10T14:30:00Z"
+  },
+  {
+    "id": "3",
+    "title": "تصميم هوية بصرية لمتجر أزياء",
+    "category": "تصميم",
+    "type": "image",
+    "url": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
+    "thumbnail": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop",
+    "description": "تصميم هوية بصرية متكاملة لمتجر أزياء يشمل الشعار والألوان والخطوط",
+    "createdAt": "2024-01-05T09:15:00Z"
+  },
+  {
+    "id": "4",
+    "title": "إدارة حسابات السوشال ميديا لعيادة طبية",
+    "category": "سوشال ميديا",
+    "type": "image",
+    "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=600&fit=crop",
+    "thumbnail": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop",
+    "description": "إدارة شاملة لحسابات السوشال ميديا لعيادة طبية مع إنتاج محتوى طبي متخصص",
+    "createdAt": "2024-01-01T16:45:00Z"
+  }
+]

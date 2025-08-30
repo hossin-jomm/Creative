@@ -1,0 +1,482 @@
+/* تم استبدال استيراد الخطوط باستخدام next/font */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+  /* Comprehensive CSS Reset - Added to replace styles from react-lightbox-component */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  body {
+    font-family: 'Cairo', 'Poppins', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    color: #333;
+    background-color: #fff;
+    overflow-x: hidden;
+  }
+  
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  input, button, textarea, select {
+    font: inherit;
+  }
+  
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  ul, ol {
+    list-style: none;
+  }
+  
+  /* Font settings */
+  .font-cairo {
+    font-family: 'Cairo', sans-serif;
+  }
+  
+  .font-poppins {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* Custom styles for yet-another-react-lightbox */
+  .yarl__root {
+    --yarl__color_backdrop: rgba(0, 0, 0, 0.9);
+    --yarl__slide_title_color: #fff;
+    --yarl__slide_title_font_size: 1.2rem;
+    --yarl__slide_title_font_weight: 600;
+    --yarl__slide_description_color: #f0f0f0;
+    --yarl__color_button: rgba(255, 255, 255, 0.8);
+    --yarl__color_button_active: #fff;
+  }
+  
+  .yarl__container {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  
+  /* Fix for logo and layout issues */
+    header a img, header img {
+      max-height: 60px !important;
+      width: auto !important;
+      object-fit: contain !important;
+    }
+    
+    /* Fix for Next.js Image component */
+    header a span[style*="display:block"] {
+      display: inline-block !important;
+    }
+   
+   /* Scroll behavior */
+   html {
+     scroll-behavior: smooth;
+  }
+  
+  /* تحسينات للأجهزة المحمولة */
+  @media (max-width: 768px) {
+    body {
+      font-size: 15px;
+    }
+    
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    h1 {
+      font-size: 1.75rem;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+    }
+    
+    .section-padding {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  }
+  
+  /* توحيد مقياس العناوين والمسافات */
+  h1 {
+    font-size: 3rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07));
+    
+    @media (min-width: 768px) {
+        font-size: 3.75rem;
+    }
+    
+    @media (min-width: 1024px) {
+        font-size: 4.5rem;
+    }
+  }
+  
+  h2 {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    filter: drop-shadow(0 2px 2px rgb(0 0 0 / 0.07));
+    
+    @media (min-width: 768px) {
+        font-size: 3rem;
+        line-height: 1;
+    }
+  }
+  
+  h3 {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    
+    @media (min-width: 768px) {
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+    }
+  }
+  
+  h4 {
+    font-size: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    
+    @media (min-width: 768px) {
+        font-size: 1.875rem;
+    }
+  }
+  
+  h5 {
+    font-size: 1.25rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+    
+    @media (min-width: 768px) {
+        font-size: 1.5rem;
+    }
+  }
+  
+  h6 {
+    font-size: 1.125rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    
+    @media (min-width: 768px) {
+        font-size: 1.25rem;
+    }
+  }
+  
+  p {
+    font-size: 1.125rem;
+    margin-bottom: 1.25rem;
+    line-height: 1.75;
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    background-image: linear-gradient(to right, var(--secondary-600), var(--primary-600));
+    color: white;
+    padding: 2rem 1rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    transition: all 300ms;
+    transform: scale(1);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    margin-top: 1.5rem;
+  }
+  
+  .btn-secondary {
+    border: 2px solid var(--secondary-600);
+    color: var(--secondary-600);
+    padding: 2rem 1rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    transition: all 300ms;
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-600);
+    color: white;
+  }
+  
+  /* تباعد بين الأزرار */
+  .btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 640px) {
+    .btn-group {
+        flex-direction: row;
+    }
+  }
+  
+  .card {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition: all 300ms;
+    transform: translateY(0);
+}
+
+.card:hover {
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+    transform: translateY(-0.5rem);
+  }
+  
+  .gradient-text {
+    background-image: linear-gradient(to right, #facc15, var(--primary-500), var(--secondary-500));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 4px 6px rgb(0 0 0 / 0.07));
+  }
+  
+  .section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .section-padding {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .section-padding {
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .section-padding {
+        padding-top: 7rem;
+        padding-bottom: 7rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+  }
+  
+  /* توحيد المسافات العمودية بين الأقسام */
+  .section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+    .section-title {
+        margin-bottom: 5rem;
+    }
+  }
+  
+  /* تحسين محاذاة النصوص */
+  .text-center-content {
+    text-align: center;
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* تحسينات إضافية للأجهزة المحمولة */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 80%;
+    max-width: 20rem;
+    background-color: white;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    z-index: 50;
+    transform: translateX(0);
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+  
+  .mobile-menu.hidden {
+    transform: translateX(100%);
+  }
+  
+  .mobile-menu.visible {
+    transform: translateX(0);
+  }
+  
+  /* تحسينات للأجهزة اللوحية */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .tablet-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    
+    .tablet-padding {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+    
+    .section-padding {
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+    }
+    
+    h1 {
+      font-size: 2rem;
+    }
+    
+    h2 {
+      font-size: 1.75rem;
+    }
+    
+    .container {
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  /* استخدام clamp للحصول على حجم خط متناسب */
+  .fluid-text {
+    font-size: clamp(1rem, 0.5rem + 1vw, 1.5rem);
+  }
+  
+  /* تحسينات إضافية للتوافق مع RTL */
+  .rtl-flip {
+    transform: scaleX(-1);
+  }
+  
+  /* تحسينات للصور على الأجهزة المحمولة */
+  @media (max-width: 768px) {
+    .mobile-image {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    /* تحسين المسافات بين العناصر */
+    .mobile-stack > * + * {
+      margin-top: 1rem;
+    }
+    
+    /* تحسين أحجام الأزرار */
+    .btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+    }
+  }
+  
+  .fluid-heading {
+    font-size: clamp(1.5rem, 1.2rem + 1.5vw, 3rem);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #a855f7, #0ea5e9);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #9333ea, #0284c7);
+}
+
+/* WhatsApp floating button */
+.whatsapp-float {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  bottom: 30px;
+  right: 30px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 24px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+/* زر العودة للأعلى */
+.scroll-to-top {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  bottom: 30px;
+  left: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 20px;
+  box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 4px 4px 8px #999;
+}
+
+.whatsapp-float i {
+  margin-top: 16px;
+}
+
+/* تحسين الخلفيات المتدرجة */
+.gradient-bg {
+  background-image: linear-gradient(to bottom right, var(--secondary-900), var(--primary-900), var(--accent-900));
+  transition: all 1000ms;
+}
+
+/* تحسين النصوص الطويلة */
+.limited-width-text {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* إضافة ظل خفيف تحت العناوين */
+.shadowed-heading {
+  filter: drop-shadow(0 10px 15px rgb(0 0 0 / 0.1));
+}

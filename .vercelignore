@@ -1,0 +1,26 @@
+# ملفات ومجلدات يجب تجاهلها عند النشر على Vercel
+
+# ملفات التوثيق
+*.md
+!README.md
+
+# ملفات التطوير
+.git
+.github
+.vscode
+.idea
+
+# ملفات البناء والتبعيات
+node_modules
+.next
+out
+
+# ملفات البيئة المحلية
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ملفات النظام
+.DS_Store
+Thumbs.db
