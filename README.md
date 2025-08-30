@@ -45,8 +45,8 @@
 
 1. **استنساخ المشروع**
 ```bash
-git clone https://github.com/hossin-jomm/Creative-Ai.git
-cd Creative-Ai
+git clone https://github.com/hossin-jomm/Creative.git
+cd Creative
 ```
 
 2. **تثبيت التبعيات**
