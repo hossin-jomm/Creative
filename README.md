@@ -2,6 +2,10 @@
 
 موقع متكامل لوكالة تسويق وإدارة سوشال ميديا باستخدام Next.js و React و Tailwind CSS.
 
+## رابط الموقع
+
+[https://creative-dttddsgjj-hossin-jomms-projects.vercel.app](https://creative-dttddsgjj-hossin-jomms-projects.vercel.app)
+
 ## المميزات
 
 ### الواجهة العامة
@@ -48,6 +52,24 @@
 git clone https://github.com/hossin-jomm/Creative.git
 cd Creative
 ```
+
+## النشر على Vercel
+
+يمكن نشر المشروع بسهولة على منصة Vercel باتباع الخطوات التالية:
+
+1. قم بإنشاء حساب على [Vercel](https://vercel.com) إذا لم يكن لديك حساب بالفعل
+2. قم بتوصيل حسابك على GitHub بحساب Vercel
+3. انقر على زر "New Project" في لوحة تحكم Vercel
+4. اختر مستودع المشروع من قائمة المستودعات المتاحة
+5. اضبط الإعدادات التالية:
+   - **Project Name**: creative
+   - **Framework Preset**: Next.js
+   - **Root Directory**: ./
+   - **Build Command**: next build
+6. انقر على زر "Deploy" للبدء في عملية النشر
+
+بعد اكتمال عملية النشر، سيكون الموقع متاحًا على الرابط:
+[https://creative-dttddsgjj-hossin-jomms-projects.vercel.app](https://creative-dttddsgjj-hossin-jomms-projects.vercel.app)
 
 2. **تثبيت التبعيات**
 ```bash

@@ -40,9 +40,9 @@ async function writePortfolioData(data: PortfolioItem[]) {
 // GET - جلب عنصر واحد
 export async function GET(
   request: NextRequest,
-  context: { params: { id: string } }
+  { params }: { params: { id: string } }
 ) {
-  const { id } = context.params
+  const { id } = params
   try {
     const items = await readPortfolioData()
     const item = items.find(item => item.id === id)
@@ -67,9 +67,9 @@ export async function GET(
 // PUT - تعديل عنصر (يتطلب تسجيل دخول الأدمن)
 export async function PUT(
   request: NextRequest,
-  context: { params: { id: string } }
+  { params }: { params: { id: string } }
 ) {
-  const { id } = context.params
+  const { id } = params
   try {
     // التحقق من صحة التوكن
     const auth = request.headers.get('authorization') || ''
@@ -138,9 +138,9 @@ export async function PUT(
 // DELETE - حذف عنصر (يتطلب تسجيل دخول الأدمن)
 export async function DELETE(
   request: NextRequest,
-  context: { params: { id: string } }
+  { params }: { params: { id: string } }
 ) {
-  const { id } = context.params
+  const { id } = params
   try {
     // التحقق من صحة التوكن
     const auth = request.headers.get('authorization') || ''
