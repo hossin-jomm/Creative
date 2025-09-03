@@ -54,7 +54,7 @@ const WhyChooseUs = () => {
       icon: Clock,
       title: 'استجابة سريعة 24/7',
       description: 'فريق دعم متاح على مدار الساعة للرد على استفساراتك وحل أي مشاكل فورياً',
-      color: 'text-cyan-600'
+      color: 'text-gray-600'
     },
     {
       icon: Award,
@@ -65,10 +65,11 @@ const WhyChooseUs = () => {
   ]
 
   const stats = [
-    { number: '98%', label: 'معدل رضا العملاء' },
-    { number: '300%', label: 'متوسط زيادة المبيعات' },
-    { number: '24h', label: 'وقت الاستجابة' },
-    { number: '500+', label: 'مشروع ناجح' }
+    { number: '98%' ,color: 'text-gray-600', label: 'معدل رضا العملاء' },
+    { number: '300%',color: 'text-gray-600' , label: 'متوسط زيادة المبيعات' },
+    { number: '24h',color: 'text-gray-600' , label: 'وقت الاستجابة' },    
+    { number: '500+',color: 'text-gray-600' , label: 'مشروع ناجح' }
+    
   ]
 
   return (

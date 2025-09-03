@@ -32,37 +32,37 @@ const Footer = () => {
     {
       name: 'Facebook',
       icon: 'fab fa-facebook-f',
-      url: 'https://facebook.com/aicreative',
+      url: 'https://facebook.com/',
       color: 'hover:bg-blue-600'
     },
     {
       name: 'Instagram',
       icon: 'fab fa-instagram',
-      url: 'https://instagram.com/aicreative',
+      url: 'https://instagram.com/',
       color: 'hover:bg-pink-600'
     },
     {
       name: 'LinkedIn',
       icon: 'fab fa-linkedin-in',
-      url: 'https://linkedin.com/company/aicreative',
+      url: 'https://linkedin.com/company/',
       color: 'hover:bg-blue-700'
     },
     {
       name: 'Twitter',
       icon: 'fab fa-twitter',
-      url: 'https://twitter.com/aicreative',
+      url: 'https://twitter.com/  ',
       color: 'hover:bg-blue-400'
     },
     {
       name: 'TikTok',
       icon: 'fab fa-tiktok',
-      url: 'https://tiktok.com/@aicreative',
+      url: 'https://tiktok.com/@a',
       color: 'hover:bg-black'
     },
     {
       name: 'YouTube',
       icon: 'fab fa-youtube',
-      url: 'https://youtube.com/@aicreative',
+      url: 'https://youtube.com/@a',
       color: 'hover:bg-red-600'
     }
   ]
@@ -186,11 +186,11 @@ const Footer = () => {
               </div>
               <div className="flex items-center gap-3 text-gray-300">
                 <i className="fas fa-phone w-4"></i>
-                <span className="text-sm">+963 123 456 789</span>
+                <span className="text-sm">+963 0994661991</span>
               </div>
               <div className="flex items-center gap-3 text-gray-300">
                 <i className="fas fa-map-marker-alt w-4"></i>
-                <span className="text-sm">دمشق، سوريا</span>
+                <span className="text-sm">حلب ، سوريا</span>
               </div>
             </div>
           </motion.div>

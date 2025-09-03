@@ -143,37 +143,37 @@ const ContactForm = () => {
     {
       name: 'Facebook',
       icon: 'fab fa-facebook-f',
-      url: 'https://facebook.com/aicreative',
+      url: 'https://facebook.com/',
       color: 'hover:text-blue-600'
     },
     {
       name: 'Instagram',
       icon: 'fab fa-instagram',
-      url: 'https://instagram.com/aicreative',
+      url: 'https://instagram.com/',
       color: 'hover:text-pink-600'
     },
     {
       name: 'LinkedIn',
       icon: 'fab fa-linkedin-in',
-      url: 'https://linkedin.com/company/aicreative',
+      url: 'https://linkedin.com/company/',
       color: 'hover:text-blue-700'
     },
     {
       name: 'Twitter',
       icon: 'fab fa-twitter',
-      url: 'https://twitter.com/aicreative',
+      url: 'https://twitter.com/',
       color: 'hover:text-blue-400'
     },
     {
       name: 'TikTok',
       icon: 'fab fa-tiktok',
-      url: 'https://tiktok.com/@aicreative',
+      url: 'https://tiktok.com/',
       color: 'hover:text-black'
     },
     {
       name: 'YouTube',
       icon: 'fab fa-youtube',
-      url: 'https://youtube.com/@aicreative',
+      url: 'https://youtube.com/',
       color: 'hover:text-red-600'
     }
   ]
