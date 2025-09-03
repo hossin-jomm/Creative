@@ -3,10 +3,9 @@ const nextConfig = {
   images: {
     domains: ['localhost', 'images.unsplash.com', 'mir-s3-cdn-cf.behance.net', 'sample-videos.com'],
   },
+  skipTrailingSlashRedirect: true,
   experimental: {
-    skipTrailingSlashRedirect: true,
-    // تجاوز التحقق من إصدار Node.js
-    skipNodeVersionCheck: true,
+    // أي خيارات تجريبية أخرى يمكن إضافتها هنا
   },
 }
 
