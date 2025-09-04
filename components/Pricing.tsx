@@ -28,7 +28,6 @@ const PricingContent = () => {
     },
     {
       title: 'الباقة الفضية',
-      subtitle: 'الأكثر مبيعًا',
       icon: '🥈',
       features: [
         'دراسة المنافسين وخلق ميزة تنافسية',
@@ -77,10 +76,10 @@ const PricingContent = () => {
   return (
     <section id="pricing" className="relative py-16 md:py-24 overflow-hidden bg-[#f4f5f8] dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800">
       {/* Background Elements - Similar to Hero.tsx */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-secondary-500/20 rounded-full blur-3xl animate-float" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-accent-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }} />
+     <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-secondary-600/40 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary-600/40 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-primary-400/30 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }} />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -119,9 +118,9 @@ const PricingContent = () => {
               whileHover={prefersReducedMotion ? {} : pkg.popular ? { y: -15, boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.3)' } : { y: -10, boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)' }}
               style={pkg.popular ? { transform: 'scale(1.2)' } : {}}
             >
-              {/* Popular Badge - Moved to right side with better spacing and contrast */}
+             {/* Popular Badge - Moved to left side with better spacing and contrast */}
               {pkg.popular && (
-                <div className="absolute top-4 right-4 bg-gradient-to-r from-pink-600 to-rose-600 text-white text-sm font-bold py-1.5 px-4 rounded-lg z-10 shadow-md">
+                <div className="absolute top-4 left-4 bg-gradient-to-r from-pink-600 to-rose-600 text-white text-sm font-bold py-1.5 px-4 rounded-lg z-10 shadow-md">
                   الأكثر مبيعًا
                 </div>
               )}
@@ -132,9 +131,7 @@ const PricingContent = () => {
                   <span>{pkg.title}</span>
                   <span>{pkg.icon}</span>
                 </div>
-                {pkg.subtitle && (
-                  <div className="text-sm font-medium text-white/80 mb-2">{pkg.subtitle}</div>
-                )}
+              
                 <div className={`mt-4 ${pkg.popular ? 'text-5xl md:text-6xl' : 'text-3xl md:text-4xl'} font-bold`}>
                   ${pkg.price}
                   <span className={`${pkg.popular ? 'text-xl md:text-2xl' : 'text-lg md:text-xl'} font-normal opacity-80`}> / شهرياً</span>
