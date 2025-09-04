@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion'
 import Link from 'next/link'
-
+import Image from 'next/image'
 const Footer = () => {
   const currentYear = new Date().getFullYear()
   const prefersReducedMotion = useReducedMotion()
@@ -80,16 +80,17 @@ const Footer = () => {
             transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
             viewport={{ once: true }}
           >
-            {/* Logo */}
-            <div className="flex items-center space-x-2 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-r from-secondary-600 to-primary-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">AI</span>
-              </div>
-              <span className="font-display font-bold text-2xl gradient-text bg-gradient-to-r from-secondary-400 to-primary-400 bg-clip-text text-transparent">
-                Ai Creative
-              </span>
+           {/* Logo */}
+            <div className="flex items-center mb-6">
+              <Image 
+                src="/logo.svg" 
+                alt="Ai Creative Logo" 
+                width={180} 
+                height={70}
+                className="w-auto h-14 object-contain filter brightness-0 invert" 
+                priority
+              />
             </div>
-            
             <p className="text-gray-300 mb-6 leading-relaxed">
               وكالة تسويق رقمي متخصصة في إنشاء حملات تسويقية مبتكرة 
               باستخدام أحدث تقنيات الذكاء الاصطناعي.

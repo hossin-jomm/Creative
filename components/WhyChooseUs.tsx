@@ -65,11 +65,10 @@ const WhyChooseUs = () => {
   ]
 
   const stats = [
-    { number: '98%' ,color: 'text-gray-600', label: 'معدل رضا العملاء' },
-    { number: '300%',color: 'text-gray-600' , label: 'متوسط زيادة المبيعات' },
-    { number: '24h',color: 'text-gray-600' , label: 'وقت الاستجابة' },    
-    { number: '500+',color: 'text-gray-600' , label: 'مشروع ناجح' }
-    
+    { number: '98%' ,color: 'text-black font-bold', label: 'معدل رضا العملاء' },
+    { number: '300%',color: 'text-black font-bold' , label: 'متوسط زيادة المبيعات' },
+    { number: '24h',color: 'text-black font-bold' , label: 'وقت الاستجابة' },
+    { number: '500+',color: 'text-black font-bold' , label: 'مشروع ناجح' }
   ]
 
   return (
@@ -150,7 +149,7 @@ const WhyChooseUs = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <div className="text-4xl lg:text-5xl font-bold gradient-text mb-2">
+                <div className={`text-4xl lg:text-5xl font-bold ${stat.color} mb-2`}>
                   {stat.number}
                 </div>
                 <div className="text-gray-600 font-medium">

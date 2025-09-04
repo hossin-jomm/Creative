@@ -42,11 +42,11 @@ const HeaderContent = () => {
           {/* Logo - تم تغيير الترتيب إلى order-2 ليظهر على اليمين */}
           <Link href="/" className="flex items-center order-2">
             <Image 
-              src="/ai-Creative/logo.svg" 
+             src="/logo.svg" 
               alt="Ai Creative Logo" 
-              width={300} 
-              height={120}
-              className="w-auto h-8 md:h-10 lg:h-12 max-w-[220px] md:max-w-[300px] lg:max-w-[180px]" 
+              width={200} 
+              height={80}
+              className="w-auto h-12 md:h-14 lg:h-16 object-contain" 
               priority
             />
           </Link>
