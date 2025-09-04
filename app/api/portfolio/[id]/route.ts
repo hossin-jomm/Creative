@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { promises as fs } from 'fs'
-import path from 'path'
 import { verifyAdminToken } from '@/lib/auth'
+import supabase from '@/lib/supabaseClient'
 
 interface PortfolioItem {
   id: string
@@ -14,29 +13,6 @@ interface PortfolioItem {
   createdAt: string
 }
 
-const PORTFOLIO_FILE = path.join(process.cwd(), 'data', 'portfolio.json')
-
-// قراءة بيانات المعرض
-async function readPortfolioData(): Promise<PortfolioItem[]> {
-  try {
-    const data = await fs.readFile(PORTFOLIO_FILE, 'utf-8')
-    return JSON.parse(data)
-  } catch (error) {
-    return []
-  }
-}
-
-// كتابة بيانات المعرض
-async function writePortfolioData(data: PortfolioItem[]) {
-  const dataDir = path.join(process.cwd(), 'data')
-  try {
-    await fs.access(dataDir)
-  } catch {
-    await fs.mkdir(dataDir, { recursive: true })
-  }
-  await fs.writeFile(PORTFOLIO_FILE, JSON.stringify(data, null, 2))
-}
-
 // GET - جلب عنصر واحد
 export async function GET(
   request: NextRequest,
@@ -44,17 +20,28 @@ export async function GET(
 ) {
   const { id } = params
   try {
-    const items = await readPortfolioData()
-    const item = items.find(item => item.id === id)
+    const { data, error } = await supabase
+      .from('portfolio')
+      .select('*')
+      .eq('id', id)
+      .single()
 
-    if (!item) {
+    if (error) {
+      console.error('Error fetching portfolio item:', error)
+      return NextResponse.json(
+        { message: 'حدث خطأ في قراءة البيانات' },
+        { status: 500 }
+      )
+    }
+
+    if (!data) {
       return NextResponse.json(
         { message: 'العنصر غير موجود' },
         { status: 404 }
       )
     }
 
-    return NextResponse.json({ item }, { status: 200 })
+    return NextResponse.json({ item: data }, { status: 200 })
   } catch (error) {
     console.error('Error reading portfolio item:', error)
     return NextResponse.json(
@@ -96,33 +83,38 @@ export async function PUT(
       )
     }
 
-    // قراءة البيانات الحالية
-    const items = await readPortfolioData()
-    const itemIndex = items.findIndex(item => item.id === id)
+    // تحديث العنصر في Supabase
+    const { data, error } = await supabase
+      .from('portfolio')
+      .update({
+        title,
+        category,
+        type,
+        url,
+        thumbnail,
+        description,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', id)
+      .select()
 
-    if (itemIndex === -1) {
+    if (error) {
+      console.error('Error updating portfolio item:', error)
+      return NextResponse.json(
+        { message: 'حدث خطأ في تحديث العنصر' },
+        { status: 500 }
+      )
+    }
+
+    if (data.length === 0) {
       return NextResponse.json(
         { message: 'العنصر غير موجود' },
         { status: 404 }
       )
     }
 
-    // تحديث العنصر
-    items[itemIndex] = {
-      ...items[itemIndex],
-      title,
-      category,
-      type,
-      url,
-      thumbnail,
-      description
-    }
-
-    // حفظ البيانات
-    await writePortfolioData(items)
-
     return NextResponse.json(
-      { message: 'تم تحديث العنصر بنجاح', item: items[itemIndex] },
+      { message: 'تم تحديث العنصر بنجاح', item: data[0] },
       { status: 200 }
     )
 
@@ -157,25 +149,35 @@ export async function DELETE(
       )
     }
 
-    // قراءة البيانات الحالية
-    const items = await readPortfolioData()
-    const itemIndex = items.findIndex(item => item.id === id)
+    // حذف العنصر من Supabase
+    const { data: itemToDelete } = await supabase
+      .from('portfolio')
+      .select('*')
+      .eq('id', id)
+      .single()
 
-    if (itemIndex === -1) {
+    if (!itemToDelete) {
       return NextResponse.json(
         { message: 'العنصر غير موجود' },
         { status: 404 }
       )
     }
 
-    // حذف العنصر
-    const deletedItem = items.splice(itemIndex, 1)[0]
+    const { error } = await supabase
+      .from('portfolio')
+      .delete()
+      .eq('id', id)
 
-    // حفظ البيانات
-    await writePortfolioData(items)
+    if (error) {
+      console.error('Error deleting portfolio item:', error)
+      return NextResponse.json(
+        { message: 'حدث خطأ في حذف العنصر' },
+        { status: 500 }
+      )
+    }
 
     return NextResponse.json(
-      { message: 'تم حذف العنصر بنجاح', item: deletedItem },
+      { message: 'تم حذف العنصر بنجاح', item: itemToDelete },
       { status: 200 }
     )
 
@@ -187,5 +189,3 @@ export async function DELETE(
     )
   }
 }
-//# تم إصلاح مشكلة "Failed to compile" بنجاح
-// بمراجعة وإصلاح المشكلات التي كان

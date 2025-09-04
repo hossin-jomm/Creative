@@ -90,7 +90,8 @@ const AdminDashboardContent = () => {
 
   const loadPortfolioItems = async () => {
     try {
-      const response = await fetch('/api/portfolio')
+      const base = process.env.NEXT_PUBLIC_API_BASE_URL || ''
+      const response = await fetch(`${base}/api/portfolio`)
       
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({ message: 'فشل تحميل بيانات المعرض' }))
@@ -148,7 +149,8 @@ const AdminDashboardContent = () => {
         throw new Error('لم يتم العثور على رمز المصادقة')
       }
       
-      const response = await fetch(`/api/portfolio/${id}`, {
+      const base = process.env.NEXT_PUBLIC_API_BASE_URL || ''
+      const response = await fetch(`${base}/api/portfolio/${id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

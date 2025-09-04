@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { promises as fs } from 'fs'
-import path from 'path'
 import { verifyAdminToken } from '@/lib/auth'
+import supabase from '@/lib/supabaseClient'
 
 interface PortfolioItem {
   id: string
@@ -14,91 +13,24 @@ interface PortfolioItem {
   createdAt: string
 }
 
-const PORTFOLIO_FILE = path.join(process.cwd(), 'data', 'portfolio.json')
-
-// التأكد من وجود مجلد البيانات
-async function ensureDataDirectory() {
-  const dataDir = path.join(process.cwd(), 'data')
-  try {
-    await fs.access(dataDir)
-  } catch {
-    await fs.mkdir(dataDir, { recursive: true })
-  }
-}
-
-// قراءة بيانات المعرض
+// قراءة بيانات المعرض من Supabase
 async function readPortfolioData(): Promise<PortfolioItem[]> {
   try {
-    await ensureDataDirectory()
-    const data = await fs.readFile(PORTFOLIO_FILE, 'utf-8')
-    return JSON.parse(data)
-  } catch (error) {
-    // إذا لم يكن الملف موجوداً، إنشاء بيانات تجريبية
-    const sampleData: PortfolioItem[] = [
-      {
-        id: '1',
-        title: 'حملة إعلانية لمطعم فاخر',
-        category: 'إعلانات مدفوعة',
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop',
-        description: 'حملة إعلانية ناجحة حققت زيادة 300% في المبيعات',
-        createdAt: new Date().toISOString()
-      },
-      {
-        id: '2',
-        title: 'فيديو ترويجي لشركة تقنية',
-        category: 'موشن جرافيك',
-        type: 'video',
-        url: 'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4',
-        description: 'فيديو ترويجي احترافي بتقنية الموشن جرافيك',
-        createdAt: new Date().toISOString()
-      },
-      {
-        id: '3',
-        title: 'تصميم هوية بصرية متكاملة',
-        category: 'هوية بصرية',
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop',
-        description: 'تصميم هوية بصرية شاملة لشركة ناشئة',
-        createdAt: new Date().toISOString()
-      },
-      {
-        id: '4',
-        title: 'إدارة حسابات التواصل الاجتماعي',
-        category: 'سوشال ميديا',
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop',
-        description: 'إدارة احترافية لحسابات التواصل الاجتماعي',
-        createdAt: new Date().toISOString()
-      },
-      {
-        id: '5',
-        title: 'حملة تسويقية على TikTok',
-        category: 'إعلانات مدفوعة',
-        type: 'video',
-        url: 'https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_2mb.mp4',
-        description: 'حملة إعلانية ناجحة على منصة TikTok',
-        createdAt: new Date().toISOString()
-      },
-      {
-        id: '6',
-        title: 'تصميم إعلانات إبداعية',
-        category: 'تصميم جرافيك',
-        type: 'image',
-        url: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800&h=600&fit=crop',
-        description: 'تصميمات إعلانية مبتكرة وجذابة',
-        createdAt: new Date().toISOString()
-      }
-    ]
-    await writePortfolioData(sampleData)
-    return sampleData
-  }
-}
+    const { data, error } = await supabase
+      .from('portfolio')
+      .select('*')
+      .order('id', { ascending: false });
 
-// كتابة بيانات المعرض
-async function writePortfolioData(data: PortfolioItem[]) {
-  await ensureDataDirectory()
-  await fs.writeFile(PORTFOLIO_FILE, JSON.stringify(data, null, 2))
+    if (error) {
+      console.error('Supabase error:', error);
+      throw new Error(error.message);
+    }
+
+    return data || [];
+  } catch (error) {
+    console.error('Error reading portfolio data:', error);
+    throw error;
+  }
 }
 
 // GET - جلب جميع عناصر المعرض
@@ -143,12 +75,8 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // قراءة البيانات الحالية
-    const items = await readPortfolioData()
-
     // إنشاء عنصر جديد
-    const newItem: PortfolioItem = {
-      id: Date.now().toString(),
+    const newItem = {
       title,
       category,
       type,
@@ -158,21 +86,158 @@ export async function POST(request: NextRequest) {
       createdAt: new Date().toISOString()
     }
 
-    // إضافة العنصر الجديد
-    items.unshift(newItem)
+    // إضافة العنصر الجديد إلى Supabase
+    const { data, error } = await supabase
+      .from('portfolio')
+      .insert([newItem])
+      .select();
 
-    // حفظ البيانات
-    await writePortfolioData(items)
+    if (error) {
+      console.error('Supabase error:', error);
+      return NextResponse.json(
+        { message: 'حدث خطأ في إضافة العنصر: ' + error.message },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json(
-      { message: 'تم إضافة العنصر بنجاح', item: newItem },
+      { message: 'تم إضافة العنصر بنجاح', item: data[0] },
       { status: 201 }
-    )
+    );
 
   } catch (error) {
     console.error('Error adding portfolio item:', error)
     return NextResponse.json(
       { message: 'حدث خطأ في إضافة العنصر' },
+      { status: 500 }
+    )
+  }
+}
+
+// PUT - تحديث عنصر موجود (يتطلب تسجيل دخول الأدمن)
+export async function PUT(request: NextRequest) {
+  try {
+    // التحقق من صحة التوكن
+    const auth = request.headers.get('authorization') || ''
+    const [, token] = auth.split(' ')
+    if (!token) {
+      return NextResponse.json({ message: 'مفقود رمز المصادقة' }, { status: 401 })
+    }
+    try {
+      const user = verifyAdminToken(token)
+    } catch {
+      return NextResponse.json(
+        { message: 'غير مصرح لك بالوصول' },
+        { status: 401 }
+      )
+    }
+
+    const { id, title, category, type, url, thumbnail, description } = await request.json()
+
+    // التحقق من وجود المعرف
+    if (!id) {
+      return NextResponse.json(
+        { message: 'معرف العنصر مطلوب للتحديث' },
+        { status: 400 }
+      )
+    }
+
+    // إنشاء كائن التحديث بالحقول المتوفرة فقط
+    const updateData: { [key: string]: any } = {}
+    if (title !== undefined) updateData.title = title
+    if (category !== undefined) updateData.category = category
+    if (type !== undefined) updateData.type = type
+    if (url !== undefined) updateData.url = url
+    if (thumbnail !== undefined) updateData.thumbnail = thumbnail
+    if (description !== undefined) updateData.description = description
+
+    // تحديث العنصر في Supabase
+    const { data, error } = await supabase
+      .from('portfolio')
+      .update(updateData)
+      .eq('id', id)
+      .select()
+
+    if (error) {
+      console.error('Supabase error:', error)
+      return NextResponse.json(
+        { message: 'حدث خطأ في تحديث العنصر: ' + error.message },
+        { status: 500 }
+      )
+    }
+
+    if (data.length === 0) {
+      return NextResponse.json(
+        { message: 'لم يتم العثور على العنصر' },
+        { status: 404 }
+      )
+    }
+
+    return NextResponse.json(
+      { message: 'تم تحديث العنصر بنجاح', item: data[0] },
+      { status: 200 }
+    )
+
+  } catch (error) {
+    console.error('Error updating portfolio item:', error)
+    return NextResponse.json(
+      { message: 'حدث خطأ في تحديث العنصر' },
+      { status: 500 }
+    )
+  }
+}
+
+// DELETE - حذف عنصر (يتطلب تسجيل دخول الأدمن)
+export async function DELETE(request: NextRequest) {
+  try {
+    // التحقق من صحة التوكن
+    const auth = request.headers.get('authorization') || ''
+    const [, token] = auth.split(' ')
+    if (!token) {
+      return NextResponse.json({ message: 'مفقود رمز المصادقة' }, { status: 401 })
+    }
+    try {
+      const user = verifyAdminToken(token)
+    } catch {
+      return NextResponse.json(
+        { message: 'غير مصرح لك بالوصول' },
+        { status: 401 }
+      )
+    }
+
+    const url = new URL(request.url)
+    const id = url.searchParams.get('id')
+
+    if (!id) {
+      return NextResponse.json(
+        { message: 'معرف العنصر مطلوب للحذف' },
+        { status: 400 }
+      )
+    }
+
+    // حذف العنصر من Supabase
+    const { error } = await supabase
+      .from('portfolio')
+      .delete()
+      .eq('id', id)
+
+    if (error) {
+      console.error('Supabase error:', error)
+      return NextResponse.json(
+        { message: 'حدث خطأ في حذف العنصر: ' + error.message },
+        { status: 500 }
+      )
+    }
+
+    return NextResponse.json(
+      { message: 'تم حذف العنصر بنجاح' },
+      { status: 200 }
+    )
+
+  } catch (error) {
+    console.error('Error deleting portfolio item:', error)
+    return NextResponse.json(
+      { message: 'حدث خطأ في حذف العنصر' },
       { status: 500 }
     )
   }

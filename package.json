@@ -12,6 +12,7 @@
     "test:coverage": "jest --coverage"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.57.0",
     "@vercel/speed-insights": "^1.2.0",
     "bcryptjs": "^2.4.3",
     "framer-motion": "^10.16.16",

@@ -9,6 +9,7 @@ import SectionDivider from './SectionDivider'
 import Lightbox from 'yet-another-react-lightbox'
 import Captions from 'yet-another-react-lightbox/plugins/captions'
 import type { Slide } from 'yet-another-react-lightbox'
+import supabase from '@/lib/supabaseClient'
 
 // Required CSS imports
 import 'yet-another-react-lightbox/styles.css'
@@ -37,25 +38,28 @@ const PortfolioContent = () => {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    // جلب البيانات من API
+    // جلب البيانات من Supabase مباشرة
     const fetchPortfolioItems = async () => {
       setIsLoading(true)
       setError(null)
       try {
-        const response = await fetch('/api/portfolio')
-        if (response.ok) {
-          const data = await response.json()
-          // التحقق من وجود البيانات في الشكل الصحيح
-          if (data && data.items && Array.isArray(data.items)) {
-            setPortfolioItems(data.items)
-          } else {
-            console.error('بيانات المعرض ليست بالتنسيق المتوقع')
-            setPortfolioItems([])
-            setError('حدث خطأ في تنسيق البيانات')
-          }
-        } else {
-          console.error('فشل في جلب بيانات المعرض')
+        // استخدام Supabase client للاتصال بقاعدة البيانات مباشرة
+        const { data, error: supabaseError } = await supabase
+          .from('portfolio')
+          .select('*')
+          .order('createdAt', { ascending: false })
+        
+        if (supabaseError) {
+          console.error('فشل في جلب بيانات المعرض من Supabase:', supabaseError)
           setError('فشل في جلب بيانات المعرض')
+          setPortfolioItems([])
+        } else if (data) {
+          // تعيين البيانات مباشرة من Supabase
+          setPortfolioItems(data)
+        } else {
+          console.error('لا توجد بيانات معرض')
+          setPortfolioItems([])
+          setError('لا توجد بيانات متاحة')
         }
       } catch (error) {
         console.error('خطأ في جلب بيانات المعرض:', error)
