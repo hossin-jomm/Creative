@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="common.css">
+<style>
+  body { background: #2e1065; color: #fff; }
+  .photo { position: absolute; inset: 0; background: url('assets/clothes.jpg') center/cover; }
+  .panel { position: absolute; top: 0; bottom: 0; right: 0; width: 560px; background: linear-gradient(160deg, rgba(76,29,149,.96), rgba(46,16,101,.97)); clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%); }
+  .content { position: absolute; top: 110px; right: 64px; width: 420px; z-index: 5; }
+  .brand { font-size: 30px; font-weight: 800; letter-spacing: 1px; color: #e9d5ff; margin-bottom: 70px; }
+  .brand small { display: block; font-size: 18px; font-weight: 600; color: #c4b5fd; }
+  .season { font-size: 30px; font-weight: 700; color: #f0abfc; }
+  h1 { font-size: 98px; font-weight: 900; line-height: 1.02; margin: 6px 0 26px; }
+  .offer { display: inline-block; background: #f0abfc; color: #4c1d95; font-size: 30px; font-weight: 800; padding: 8px 24px; border-radius: 12px; }
+  .offer b { font-size: 46px; font-weight: 900; }
+  .desc { font-size: 26px; font-weight: 600; color: #ede9fe; margin-top: 26px; line-height: 1.5; }
+  .cta { position: absolute; bottom: 70px; right: 64px; z-index: 5; display: flex; gap: 14px; }
+  .cta div { font-size: 26px; font-weight: 800; padding: 12px 30px; border-radius: 999px; }
+  .cta .primary { background: #fff; color: #4c1d95; }
+  .cta .ghost { border: 2px solid #e9d5ff; color: #fff; }
+  .studio-credit { color: #fff; text-shadow: 0 1px 6px rgba(0,0,0,.6); }
+</style>
+</head>
+<body>
+  <div class="photo"></div>
+  <div class="panel"></div>
+  <div class="sample-badge">نموذج تجريبي</div>
+  <div class="content">
+    <div class="brand">LAVENDER<small>متجر لافندر للألبسة</small></div>
+    <div class="season">مجموعة شتاء 2026</div>
+    <h1>الشتاء وصل بأناقة</h1>
+    <div class="offer">خصم حتى <b>30%</b></div>
+    <div class="desc">على المعاطف والكنزات الصوفية<br>لفترة محدودة</div>
+  </div>
+  <div class="cta"><div class="primary">اطلبي الآن</div><div class="ghost">التوصيل مجاني</div></div>
+  <div class="studio-credit">Ai Creative</div>
+</body>
+</html>

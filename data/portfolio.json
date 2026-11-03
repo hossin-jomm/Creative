@@ -1,42 +1,62 @@
 [
   {
-    "id": "1",
-    "title": "حملة إعلانية لمطعم فاخر",
+    "id": "sample-1",
+    "title": "إعلان عرض عائلي لمطعم",
     "category": "إعلانات",
     "type": "image",
-    "url": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&h=600&fit=crop",
-    "thumbnail": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=300&fit=crop",
-    "description": "حملة إعلانية متكاملة لمطعم فاخر تضمنت إدارة السوشال ميديا والإعلانات المدفوعة",
-    "createdAt": "2024-01-15T10:00:00Z"
+    "url": "/portfolio/01-restaurant-ad.jpg",
+    "thumbnail": "/portfolio/01-restaurant-ad-thumb.jpg",
+    "description": "نموذج تجريبي باسم افتراضي: تصميم إعلان فيسبوك وإنستغرام لعرض الجمعة العائلي، يوجّه الزبون مباشرة لحجز طاولة عبر واتساب.",
+    "createdAt": "2026-11-04T09:00:00Z"
   },
   {
-    "id": "2",
-    "title": "فيديو موشن جرافيك لشركة تقنية",
-    "category": "موشن جرافيك",
-    "type": "video",
-    "url": "https://sample-videos.com/zip/10/mp4/SampleVideo_1280x720_1mb.mp4",
-    "thumbnail": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop",
-    "description": "فيديو موشن جرافيك احترافي لشرح خدمات شركة تقنية ناشئة",
-    "createdAt": "2024-01-10T14:30:00Z"
-  },
-  {
-    "id": "3",
-    "title": "تصميم هوية بصرية لمتجر أزياء",
-    "category": "تصميم",
+    "id": "sample-2",
+    "title": "إعلان عيادة أسنان",
+    "category": "إعلانات",
     "type": "image",
-    "url": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop",
-    "thumbnail": "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop",
-    "description": "تصميم هوية بصرية متكاملة لمتجر أزياء يشمل الشعار والألوان والخطوط",
-    "createdAt": "2024-01-05T09:15:00Z"
+    "url": "/portfolio/02-dental-ad.jpg",
+    "thumbnail": "/portfolio/02-dental-ad-thumb.jpg",
+    "description": "نموذج تجريبي باسم افتراضي: إعلان يركّز على الفحص المجاني لجذب مرضى جدد، مع رسالة واضحة وزر حجز موعد.",
+    "createdAt": "2026-11-04T08:00:00Z"
   },
   {
-    "id": "4",
-    "title": "إدارة حسابات السوشال ميديا لعيادة طبية",
+    "id": "sample-3",
+    "title": "منشور تشكيلة الشتاء لمتجر ألبسة",
     "category": "سوشال ميديا",
     "type": "image",
-    "url": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&h=600&fit=crop",
-    "thumbnail": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop",
-    "description": "إدارة شاملة لحسابات السوشال ميديا لعيادة طبية مع إنتاج محتوى طبي متخصص",
-    "createdAt": "2024-01-01T16:45:00Z"
+    "url": "/portfolio/03-fashion-post.jpg",
+    "thumbnail": "/portfolio/03-fashion-post-thumb.jpg",
+    "description": "نموذج تجريبي باسم افتراضي: منشور موسمي لإطلاق مجموعة الشتاء مع عرض خصم محدود المدة.",
+    "createdAt": "2026-11-04T07:00:00Z"
+  },
+  {
+    "id": "sample-4",
+    "title": "إعلان معرض موبايلات",
+    "category": "إعلانات",
+    "type": "image",
+    "url": "/portfolio/04-phones-ad.jpg",
+    "thumbnail": "/portfolio/04-phones-ad-thumb.jpg",
+    "description": "نموذج تجريبي باسم افتراضي: إعلان يبني الثقة بالكفالة والأجهزة الأصلية والتوصيل داخل حلب.",
+    "createdAt": "2026-11-04T06:00:00Z"
+  },
+  {
+    "id": "sample-5",
+    "title": "خطة حملة إعلانية لمطعم",
+    "category": "إعلانات",
+    "type": "image",
+    "url": "/portfolio/05-campaign-plan.jpg",
+    "thumbnail": "/portfolio/05-campaign-plan-thumb.jpg",
+    "description": "نموذج تجريبي: خطة حملة مدتها أسبوعان بميزانية 70$، توضّح الهدف والجمهور والمحتوى وما نقيسه أسبوعياً. الأرقام تخطيطية وليست نتائج منفّذة.",
+    "createdAt": "2026-11-04T05:00:00Z"
+  },
+  {
+    "id": "sample-6",
+    "title": "هوية بصرية لمقهى",
+    "category": "تصميم",
+    "type": "image",
+    "url": "/portfolio/06-cafe-identity.jpg",
+    "thumbnail": "/portfolio/06-cafe-identity-thumb.jpg",
+    "description": "نموذج تجريبي باسم افتراضي: لوحة هوية بصرية تشمل الشعار والألوان والخطوط ومثالاً على منشور.",
+    "createdAt": "2026-11-04T04:00:00Z"
   }
 ]

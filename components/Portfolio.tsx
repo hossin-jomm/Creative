@@ -88,7 +88,7 @@ const PortfolioContent = () => {
     { id: 'موشن جرافيك', name: 'موشن جرافيك' },
     { id: 'تصميم', name: 'تصميم' },
     { id: 'سوشال ميديا', name: 'سوشال ميديا' },
-  ]
+  ].filter(c => c.id === 'all' || portfolioItems.some(item => item.category === c.id)) // نخفي الفئات الفارغة
 
   // تكوين الحركة بناءً على تفضيل المستخدم
   const animationProps = prefersReducedMotion
@@ -126,7 +126,7 @@ const PortfolioContent = () => {
         >
           <h2 className="text-4xl font-display font-bold text-gray-800 mb-4">معرض أعمالنا</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            نفخر بتقديم مجموعة متنوعة من المشاريع التي قمنا بتنفيذها لعملائنا. استكشف أعمالنا واكتشف كيف يمكننا مساعدتك في تحقيق رؤيتك.
+            نماذج تجريبية بأسماء افتراضية توضّح أسلوبنا في التصميم والإعلانات وتخطيط الحملات. نضيف أعمال عملائنا هنا بعد موافقتهم.
           </p>
         </motion.div>
         

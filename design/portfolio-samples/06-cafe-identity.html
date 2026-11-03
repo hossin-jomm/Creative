@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="common.css">
+<style>
+  body { background: #f5efe6; color: #3b2416; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 18px; padding: 18px; }
+  .cell { border-radius: 28px; overflow: hidden; position: relative; }
+  .logo { background: #3b2416; color: #f5efe6; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .mark { width: 190px; height: 190px; border-radius: 50%; border: 6px solid #d4a373; display: flex; align-items: center; justify-content: center; position: relative; }
+  .mark svg { width: 110px; height: 110px; }
+  .logo .name { font-size: 54px; font-weight: 900; margin-top: 22px; color: #d4a373; }
+  .logo .latin { font-size: 20px; font-weight: 600; letter-spacing: 6px; direction: ltr; opacity: .8; }
+  .palette { background: #fffaf3; padding: 40px; display: flex; flex-direction: column; }
+  .palette h3, .type h3 { font-size: 22px; font-weight: 800; color: #a16207; margin-bottom: 18px; }
+  .swatches { display: flex; gap: 14px; flex: 1; }
+  .swatches div { flex: 1; border-radius: 18px; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 14px; font-size: 18px; font-weight: 700; direction: ltr; }
+  .post { background: url('assets/coffee.jpg') center/cover; }
+  .post .over { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(59,36,22,0) 35%, rgba(59,36,22,.9) 100%); }
+  .post .txt { position: absolute; right: 32px; bottom: 30px; left: 32px; color: #fff; }
+  .post .txt b { display: block; font-size: 40px; font-weight: 900; }
+  .post .txt span { font-size: 22px; font-weight: 600; color: #fde68a; }
+  .type { background: #d4a373; padding: 40px; color: #3b2416; }
+  .type h3 { color: #3b2416; }
+  .aa { font-size: 120px; font-weight: 900; line-height: 1; }
+  .type p { font-size: 26px; font-weight: 600; margin-top: 18px; line-height: 1.5; }
+  .sample-badge { top: 34px; left: 34px; }
+  .studio-credit { color: #3b2416; left: 40px; bottom: 34px; }
+</style>
+</head>
+<body>
+  <div class="cell logo">
+    <div class="mark"><svg viewBox="0 0 64 64" fill="none" stroke="#d4a373" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 26h30v12a14 14 0 0 1-14 14h-2a14 14 0 0 1-14-14z"/><path d="M44 30h4a6 6 0 0 1 0 12h-4"/><path d="M24 8v8M32 6v10M40 8v8"/><path d="M10 56h40"/></svg></div>
+    <div class="name">قهوة القلعة</div>
+    <div class="latin">QALAA COFFEE</div>
+  </div>
+  <div class="cell palette">
+    <h3>الألوان</h3>
+    <div class="swatches">
+      <div style="background:#3b2416;color:#f5efe6">#3B2416</div>
+      <div style="background:#d4a373;color:#3b2416">#D4A373</div>
+      <div style="background:#f5efe6;color:#3b2416;border:2px solid #e7dccb">#F5EFE6</div>
+      <div style="background:#a16207;color:#fff">#A16207</div>
+    </div>
+  </div>
+  <div class="cell type">
+    <h3>الخط</h3>
+    <div class="aa">أ ب ج</div>
+    <p>Cairo Black للعناوين<br>Cairo SemiBold للنصوص</p>
+  </div>
+  <div class="cell post"><div class="over"></div><div class="txt"><b>صباحك من القلعة</b><span>قهوة مختصة · حلب القديمة</span></div></div>
+  <div class="sample-badge">نموذج تجريبي · هوية بصرية</div>
+  <div class="studio-credit">Ai Creative</div>
+</body>
+</html>

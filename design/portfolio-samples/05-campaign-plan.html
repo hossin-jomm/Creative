@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="common.css">
+<style>
+  body { background: #f8fafc; color: #0f172a; padding: 60px 64px; }
+  header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 3px solid #e2e8f0; padding-bottom: 22px; margin-top: 30px; }
+  .label { font-size: 22px; font-weight: 700; color: #7c3aed; }
+  h1 { font-size: 54px; font-weight: 900; line-height: 1.15; }
+  .platforms { display: flex; gap: 10px; }
+  .platforms div { font-size: 20px; font-weight: 700; padding: 6px 16px; border-radius: 10px; background: #ede9fe; color: #5b21b6; direction: ltr; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
+  .box { background: #fff; border-radius: 22px; padding: 22px 26px; box-shadow: 0 6px 22px rgba(15,23,42,.06); border: 1px solid #e2e8f0; }
+  .box h2 { font-size: 22px; font-weight: 800; color: #64748b; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+  .box h2 i { width: 12px; height: 12px; border-radius: 50%; background: var(--c); display: inline-block; }
+  .box p { font-size: 26px; font-weight: 700; line-height: 1.45; }
+  .box small { display: block; font-size: 20px; font-weight: 600; color: #64748b; margin-top: 4px; }
+  .budget { grid-column: span 2; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(90deg, #7c3aed, #2563eb); color: #fff; border: 0; }
+  .budget .num { font-size: 60px; font-weight: 900; direction: ltr; }
+  .budget p { font-size: 26px; }
+  .timeline { grid-column: span 2; }
+  .steps { display: flex; gap: 14px; margin-top: 8px; }
+  .steps div { flex: 1; background: #f1f5f9; border-radius: 14px; padding: 12px 16px; font-size: 21px; font-weight: 700; line-height: 1.4; }
+  .steps b { display: block; color: #7c3aed; font-size: 19px; }
+  .disclaimer { position: absolute; bottom: 30px; right: 64px; font-size: 19px; color: #64748b; }
+  .studio-credit { color: #475569; }
+</style>
+</head>
+<body>
+  <div class="sample-badge">نموذج تجريبي</div>
+  <header>
+    <div><div class="label">خطة حملة إعلانية</div><h1>مطعم عائلي في حلب</h1></div>
+    <div class="platforms"><div>Facebook</div><div>Instagram</div></div>
+  </header>
+  <div class="grid">
+    <div class="box" style="--c:#22c55e"><h2><i></i>الهدف</h2><p>رسائل واتساب وحجوزات الطاولات<small>بدل الإعجابات والمتابعين</small></p></div>
+    <div class="box" style="--c:#f59e0b"><h2><i></i>الجمهور</h2><p>حلب، نطاق 6 كم، عمر 22 إلى 45<small>اهتمامات: المطاعم، الطعام، العائلة</small></p></div>
+    <div class="box" style="--c:#ec4899"><h2><i></i>المحتوى</h2><p>3 تصاميم + ريل 15 ثانية<small>نختبرها معاً ونُبقي الأفضل أداءً</small></p></div>
+    <div class="box" style="--c:#0ea5e9"><h2><i></i>ما نقيسه أسبوعياً</h2><p>تكلفة الرسالة وعدد الحجوزات<small>ومعدل النقر لكل إعلان</small></p></div>
+    <div class="box budget"><div><h2 style="color:#ddd6fe">الميزانية</h2><p>5$ يومياً لمدة 14 يوماً</p></div><div class="num">$70</div></div>
+    <div class="box timeline"><h2 style="--c:#7c3aed"><i></i>الجدول</h2>
+      <div class="steps">
+        <div><b>الأيام 1 إلى 3</b>إطلاق 3 إعلانات بنفس الميزانية</div>
+        <div><b>الأيام 4 إلى 7</b>إيقاف الأضعف ورفع ميزانية الأفضل</div>
+        <div><b>الأسبوع الثاني</b>إعادة استهداف من تفاعل وتقرير ختامي</div>
+      </div>
+    </div>
+  </div>
+  <div class="disclaimer">* أرقام تخطيطية لتوضيح طريقة عملنا، وليست نتائج حملة منفّذة.</div>
+  <div class="studio-credit">Ai Creative</div>
+</body>
+</html>

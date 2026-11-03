@@ -1,0 +1,22 @@
+@font-face { font-family: 'Cairo'; font-weight: 400; src: url('../../public/Cairo/static/Cairo-Regular.ttf'); }
+@font-face { font-family: 'Cairo'; font-weight: 600; src: url('../../public/Cairo/static/Cairo-SemiBold.ttf'); }
+@font-face { font-family: 'Cairo'; font-weight: 700; src: url('../../public/Cairo/static/Cairo-Bold.ttf'); }
+@font-face { font-family: 'Cairo'; font-weight: 900; src: url('../../public/Cairo/static/Cairo-Black.ttf'); }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1080px; overflow: hidden; }
+body { font-family: 'Cairo', sans-serif; direction: rtl; position: relative; line-height: 1.35; }
+
+/* شارة الصدق: كل عمل في المعرض مكتوب عليه أنه نموذج تجريبي */
+.sample-badge {
+  position: absolute; top: 32px; left: 32px; z-index: 20;
+  background: rgba(15, 23, 42, 0.72); color: #fff;
+  font-size: 22px; font-weight: 600; padding: 8px 22px; border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+.studio-credit {
+  position: absolute; bottom: 26px; left: 32px; z-index: 20;
+  font-size: 18px; font-weight: 600; letter-spacing: 0.5px; opacity: 0.75;
+  direction: ltr;
+}
+.wa-icon { width: 1em; height: 1em; display: inline-block; vertical-align: -0.12em; }
