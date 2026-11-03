@@ -12,7 +12,7 @@ const WhatsAppFloatContent = () => {
   
   const handleWhatsAppClick = () => {
     const encodedMessage = encodeURIComponent(message)
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
+    const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${encodedMessage}`
     window.open(whatsappUrl, '_blank')
   }
 

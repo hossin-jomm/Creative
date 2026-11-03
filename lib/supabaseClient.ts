@@ -1,10 +1,23 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js'
 
-// تعريف متغيرات البيئة لـ Supabase
-const supabaseUrl = 'https://uywitzqmrhtbwguqzjxd.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV5d2l0enFtcmh0YndndXF6anhkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTY5ODUzMDIsImV4cCI6MjA3MjU2MTMwMn0.m1LhoKbZMB7_crsUZzW-dG2IBu6DmXBPcPLdzCMskJ4';
+// يُقرأ كل شيء من متغيرات البيئة. إن لم تُضبط، يعمل الموقع بدون Supabase
+// ويعرض المعرض من data/portfolio.json.
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-// إنشاء عميل Supabase
-const supabase = createClient(supabaseUrl, supabaseKey);
+export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey)
 
-export default supabase;
+// عميل للقراءة العامة (يحترم سياسات RLS)
+const supabase: SupabaseClient | null = isSupabaseConfigured
+  ? createClient(supabaseUrl!, supabaseAnonKey!)
+  : null
+
+export default supabase
+
+// عميل الكتابة: للخادم فقط، يستخدم مفتاح service role الذي لا يُعرض للمتصفح أبداً.
+// بهذا تبقى جداول Supabase مقفلة للكتابة أمام العامة، ولا يكتب إلا الأدمن عبر الـAPI.
+export function getSupabaseAdmin(): SupabaseClient | null {
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+  if (!supabaseUrl || !serviceKey) return null
+  return createClient(supabaseUrl, serviceKey, { auth: { persistSession: false } })
+}

@@ -41,3 +41,6 @@ next-env.d.ts
 # Custom
 .qodo
 .vercel
+
+# Private notes and conversations (repo is public)
+/المحادثات/

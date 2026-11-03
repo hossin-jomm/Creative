@@ -1,28 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { ADMIN_CREDENTIALS, isPasswordValid, signAdminToken } from '@/lib/auth'
+import { areCredentialsValid, getAdminUsername, signAdminToken } from '@/lib/auth'
+
+export const dynamic = 'force-dynamic'
 
 export async function POST(request: NextRequest) {
   try {
     const { username, password } = await request.json()
 
     // التحقق من وجود البيانات
-    if (!username || !password) {
+    if (typeof username !== 'string' || typeof password !== 'string' || !username || !password) {
       return NextResponse.json(
         { message: 'اسم المستخدم وكلمة المرور مطلوبان' },
         { status: 400 }
       )
     }
 
-    // التحقق من اسم المستخدم
-    if (username !== ADMIN_CREDENTIALS.username) {
-      return NextResponse.json(
-        { message: 'اسم المستخدم أو كلمة المرور غير صحيحة' },
-        { status: 401 }
-      )
-    }
-
-    // التحقق من كلمة المرور
-    const ok = await isPasswordValid(password)
+    const ok = await areCredentialsValid(username, password)
     if (!ok) {
       return NextResponse.json(
         { message: 'اسم المستخدم أو كلمة المرور غير صحيحة' },
@@ -30,21 +23,19 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // إنشاء JWT token
     const token = signAdminToken()
 
     return NextResponse.json(
-      { 
+      {
         message: 'تم تسجيل الدخول بنجاح',
         token,
         user: {
-          username: ADMIN_CREDENTIALS.username,
+          username: getAdminUsername(),
           role: 'admin'
         }
       },
       { status: 200 }
     )
-
   } catch (error) {
     console.error('Login error:', error)
     return NextResponse.json(
@@ -53,5 +44,3 @@ export async function POST(request: NextRequest) {
     )
   }
 }
-
-// تم نقل دالة التحقق من التوكن إلى src/lib/auth.ts

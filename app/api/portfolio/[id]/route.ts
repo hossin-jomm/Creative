@@ -1,191 +1,59 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { verifyAdminToken } from '@/lib/auth'
-import supabase from '@/lib/supabaseClient'
+import { getPortfolioItem, updatePortfolioItem, deletePortfolioItem } from '@/lib/portfolioStore'
+import { requireAdmin, storeErrorResponse, pickPortfolioFields } from '@/lib/adminGuard'
 
-interface PortfolioItem {
-  id: string
-  title: string
-  category: string
-  type: 'image' | 'video'
-  url: string
-  thumbnail?: string
-  description?: string
-  createdAt: string
+export const dynamic = 'force-dynamic'
+
+type Params = { params: { id: string } }
+
+// GET - جلب عنصر واحد (عام)
+export async function GET(_request: NextRequest, { params }: Params) {
+  const item = await getPortfolioItem(params.id)
+  if (!item) {
+    return NextResponse.json({ message: 'العنصر غير موجود' }, { status: 404 })
+  }
+  return NextResponse.json({ item }, { status: 200 })
 }
 
-// GET - جلب عنصر واحد
-export async function GET(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  const { id } = params
+// PUT - تعديل عنصر (للأدمن فقط)
+export async function PUT(request: NextRequest, { params }: Params) {
+  const denied = requireAdmin(request)
+  if (denied) return denied
+
+  let fields
   try {
-    const { data, error } = await supabase
-      .from('portfolio')
-      .select('*')
-      .eq('id', id)
-      .single()
-
-    if (error) {
-      console.error('Error fetching portfolio item:', error)
-      return NextResponse.json(
-        { message: 'حدث خطأ في قراءة البيانات' },
-        { status: 500 }
-      )
-    }
-
-    if (!data) {
-      return NextResponse.json(
-        { message: 'العنصر غير موجود' },
-        { status: 404 }
-      )
-    }
-
-    return NextResponse.json({ item: data }, { status: 200 })
+    fields = pickPortfolioFields(await request.json())
   } catch (error) {
-    console.error('Error reading portfolio item:', error)
-    return NextResponse.json(
-      { message: 'حدث خطأ في قراءة البيانات' },
-      { status: 500 }
-    )
+    return NextResponse.json({ message: (error as Error).message || 'بيانات غير صالحة' }, { status: 400 })
+  }
+
+  if (!fields.title || !fields.category || !fields.type || !fields.url) {
+    return NextResponse.json({ message: 'البيانات المطلوبة ناقصة' }, { status: 400 })
+  }
+
+  try {
+    const item = await updatePortfolioItem(params.id, fields)
+    if (!item) {
+      return NextResponse.json({ message: 'العنصر غير موجود' }, { status: 404 })
+    }
+    return NextResponse.json({ message: 'تم تحديث العنصر بنجاح', item }, { status: 200 })
+  } catch (error) {
+    return storeErrorResponse(error, 'حدث خطأ في تحديث العنصر')
   }
 }
 
-// PUT - تعديل عنصر (يتطلب تسجيل دخول الأدمن)
-export async function PUT(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  const { id } = params
+// DELETE - حذف عنصر (للأدمن فقط)
+export async function DELETE(request: NextRequest, { params }: Params) {
+  const denied = requireAdmin(request)
+  if (denied) return denied
+
   try {
-    // التحقق من صحة التوكن
-    const auth = request.headers.get('authorization') || ''
-    const [, token] = auth.split(' ')
-    if (!token) {
-      return NextResponse.json({ message: 'مفقود رمز المصادقة' }, { status: 401 })
+    const deleted = await deletePortfolioItem(params.id)
+    if (!deleted) {
+      return NextResponse.json({ message: 'العنصر غير موجود' }, { status: 404 })
     }
-    try {
-      const user = verifyAdminToken(token)
-    } catch {
-      return NextResponse.json(
-        { message: 'غير مصرح لك بالوصول' },
-        { status: 401 }
-      )
-    }
-
-    const { title, category, type, url, thumbnail, description } = await request.json()
-
-    // التحقق من البيانات المطلوبة
-    if (!title || !category || !type || !url) {
-      return NextResponse.json(
-        { message: 'البيانات المطلوبة ناقصة' },
-        { status: 400 }
-      )
-    }
-
-    // تحديث العنصر في Supabase
-    const { data, error } = await supabase
-      .from('portfolio')
-      .update({
-        title,
-        category,
-        type,
-        url,
-        thumbnail,
-        description,
-        updated_at: new Date().toISOString()
-      })
-      .eq('id', id)
-      .select()
-
-    if (error) {
-      console.error('Error updating portfolio item:', error)
-      return NextResponse.json(
-        { message: 'حدث خطأ في تحديث العنصر' },
-        { status: 500 }
-      )
-    }
-
-    if (data.length === 0) {
-      return NextResponse.json(
-        { message: 'العنصر غير موجود' },
-        { status: 404 }
-      )
-    }
-
-    return NextResponse.json(
-      { message: 'تم تحديث العنصر بنجاح', item: data[0] },
-      { status: 200 }
-    )
-
+    return NextResponse.json({ message: 'تم حذف العنصر بنجاح' }, { status: 200 })
   } catch (error) {
-    console.error('Error updating portfolio item:', error)
-    return NextResponse.json(
-      { message: 'حدث خطأ في تحديث العنصر' },
-      { status: 500 }
-    )
-  }
-}
-
-// DELETE - حذف عنصر (يتطلب تسجيل دخول الأدمن)
-export async function DELETE(
-  request: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  const { id } = params
-  try {
-    // التحقق من صحة التوكن
-    const auth = request.headers.get('authorization') || ''
-    const [, token] = auth.split(' ')
-    if (!token) {
-      return NextResponse.json({ message: 'مفقود رمز المصادقة' }, { status: 401 })
-    }
-    try {
-      const user = verifyAdminToken(token)
-    } catch {
-      return NextResponse.json(
-        { message: 'غير مصرح لك بالوصول' },
-        { status: 401 }
-      )
-    }
-
-    // حذف العنصر من Supabase
-    const { data: itemToDelete } = await supabase
-      .from('portfolio')
-      .select('*')
-      .eq('id', id)
-      .single()
-
-    if (!itemToDelete) {
-      return NextResponse.json(
-        { message: 'العنصر غير موجود' },
-        { status: 404 }
-      )
-    }
-
-    const { error } = await supabase
-      .from('portfolio')
-      .delete()
-      .eq('id', id)
-
-    if (error) {
-      console.error('Error deleting portfolio item:', error)
-      return NextResponse.json(
-        { message: 'حدث خطأ في حذف العنصر' },
-        { status: 500 }
-      )
-    }
-
-    return NextResponse.json(
-      { message: 'تم حذف العنصر بنجاح', item: itemToDelete },
-      { status: 200 }
-    )
-
-  } catch (error) {
-    console.error('Error deleting portfolio item:', error)
-    return NextResponse.json(
-      { message: 'حدث خطأ في حذف العنصر' },
-      { status: 500 }
-    )
+    return storeErrorResponse(error, 'حدث خطأ في حذف العنصر')
   }
 }

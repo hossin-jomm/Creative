@@ -9,7 +9,6 @@ import SectionDivider from './SectionDivider'
 import Lightbox from 'yet-another-react-lightbox'
 import Captions from 'yet-another-react-lightbox/plugins/captions'
 import type { Slide } from 'yet-another-react-lightbox'
-import supabase from '@/lib/supabaseClient'
 
 // Required CSS imports
 import 'yet-another-react-lightbox/styles.css'
@@ -43,24 +42,11 @@ const PortfolioContent = () => {
       setIsLoading(true)
       setError(null)
       try {
-        // استخدام Supabase client للاتصال بقاعدة البيانات مباشرة
-        const { data, error: supabaseError } = await supabase
-          .from('portfolio')
-          .select('*')
-          .order('createdAt', { ascending: false })
-        
-        if (supabaseError) {
-          console.error('فشل في جلب بيانات المعرض من Supabase:', supabaseError)
-          setError('فشل في جلب بيانات المعرض')
-          setPortfolioItems([])
-        } else if (data) {
-          // تعيين البيانات مباشرة من Supabase
-          setPortfolioItems(data)
-        } else {
-          console.error('لا توجد بيانات معرض')
-          setPortfolioItems([])
-          setError('لا توجد بيانات متاحة')
-        }
+        // الـAPI تقرأ من Supabase إن كانت مضبوطة، وإلا من data/portfolio.json
+        const response = await fetch('/api/portfolio')
+        if (!response.ok) throw new Error(`HTTP ${response.status}`)
+        const { items } = await response.json()
+        setPortfolioItems(Array.isArray(items) ? items : [])
       } catch (error) {
         console.error('خطأ في جلب بيانات المعرض:', error)
         setError('حدث خطأ أثناء الاتصال بالخادم')
@@ -165,8 +151,24 @@ const PortfolioContent = () => {
           </div>
         )}
 
+        {/* Empty State: لا توجد أعمال منشورة بعد */}
+        {!isLoading && !error && portfolioItems.length === 0 && (
+          <div className="text-center py-12 bg-gray-50 rounded-2xl">
+            <p className="text-xl text-gray-700 mb-2">نعمل على تحديث معرض أعمالنا</p>
+            <p className="text-gray-500 mb-6">اطلب نماذج من أعمالنا السابقة مباشرة على واتساب</p>
+            <a
+              href={`https://wa.me/${(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '963994661991').replace(/\D/g, '')}?text=${encodeURIComponent('مرحباً، أريد مشاهدة نماذج من أعمالكم')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition-colors"
+            >
+              اطلب نماذج أعمالنا
+            </a>
+          </div>
+        )}
+
         {/* Content when data is loaded successfully */}
-        {!isLoading && !error && (
+        {!isLoading && !error && portfolioItems.length > 0 && (
           <>
             {/* Category Filter */}
             <motion.div

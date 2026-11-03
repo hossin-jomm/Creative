@@ -53,8 +53,13 @@ const HeroContent = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <a
-              href="#contact"
-              className="btn-primary text-base md:text-lg px-8 py-4 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 transition-all shadow-lg"
+              onClick={() => {
+                const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+963994661991'
+                const message = encodeURIComponent('السلام عليكم\nعندي فضول أن أعرف أكثر!\nكيف بتقدر حلول AI Creative الإبداعية تضيف قيمة لمشروع مثل [اكتب نوع المشروع هنا]؟')
+                const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${message}`
+                window.open(whatsappUrl, '_blank')
+              }}
+              className="btn-primary text-base md:text-lg px-8 py-4 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 transition-all shadow-lg cursor-pointer"
             >
               <span>تواصل معنا الآن</span>
               <i className="fas fa-arrow-left"></i>

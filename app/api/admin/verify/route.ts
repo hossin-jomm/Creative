@@ -13,11 +13,10 @@ export async function GET(request: NextRequest) {
     const decoded = verifyAdminToken(token) // سيرمي خطأ إن كان غير صالح
     return NextResponse.json({ ok: true, user: decoded }, { status: 200 })
 
-  } catch (error) {
-    console.error('Token verification error:', error)
+  } catch {
     return NextResponse.json(
-      { message: 'حدث خطأ في الخادم' },
-      { status: 500 }
+      { message: 'رمز المصادقة غير صالح أو منتهي' },
+      { status: 401 }
     )
   }
 }

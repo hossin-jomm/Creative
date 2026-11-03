@@ -8,9 +8,8 @@
   },
   "env": {
     "NEXT_PUBLIC_APP_NAME": "Ai Creative",
-    "NEXT_PUBLIC_APP_URL": "https://creative-dttddsgjj-hossin-jomms-projects.vercel.app",
-    "NEXT_PUBLIC_WHATSAPP_NUMBER": "+963000000000",
-    "NEXT_PUBLIC_WHATSAPP_MESSAGE": "مرحباً، أريد الاستفسار عن خدماتكم",
-    "API_BASE_URL": "https://creative-dttddsgjj-hossin-jomms-projects.vercel.app/api"
+    "NEXT_PUBLIC_APP_URL": "https://creative-two-azure.vercel.app",
+    "NEXT_PUBLIC_WHATSAPP_NUMBER": "963994661991",
+    "NEXT_PUBLIC_WHATSAPP_MESSAGE": "مرحباً، أريد الاستفسار عن خدماتكم"
   }
 }
