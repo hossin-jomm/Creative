@@ -53,9 +53,10 @@ export const isValidUrl = (url: string): boolean => {
 
 // التحقق من صحة رقم الهاتف (يمكن تعديله حسب تنسيق الهاتف المطلوب)
 export const isValidPhoneNumber = (phone: string): boolean => {
-  // هذا مثال بسيط، يمكن تعديله حسب تنسيق الهاتف المطلوب
-  const phoneRegex = /^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/;
-  return phoneRegex.test(phone);
+  // يقبل الأرقام المحلية والدولية مع المسافات والشرطات والأقواس، مثل: 0994 661 991 أو +963 994 661 991
+  if (!/^[+\d\s().-]+$/.test(phone)) return false;
+  const digits = phone.replace(/[\s().-]/g, '');
+  return /^\+?\d{7,15}$/.test(digits);
 };
 
 // التحقق من أن القيمة هي رقم صحيح

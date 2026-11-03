@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { Check } from 'lucide-react'
 import ErrorBoundary from './ErrorBoundary'
 import SectionDivider from './SectionDivider'
+import { whatsappLink } from '@/lib/siteConfig'
 
 const PricingContent = () => {
   // استخدام hook لمعرفة ما إذا كان المستخدم يفضل تقليل الحركة
@@ -12,53 +13,51 @@ const PricingContent = () => {
   // تعريف الباقات
   const packages = [
     {
-      title: 'الباقة البرونزية',
-      icon: '🥉',
+      title: 'باقة الإعلانات',
+      icon: '📣',
       features: [
-        'إدارة  منصتي فيس بوك وإنستغرام (إعداد خطة محتوى احترافية)',
-        'إعادة تصميم صورة الكفر وصورة المنصة الشخصية',
+        'إعداد وإدارة حملة إعلانية على فيسبوك وإنستغرام',
+        'دراسة جمهورك المستهدف وضبط الاستهداف',
+        '6 تصاميم إعلانية',
+        '2 فيديو Reels إعلاني',
+        'كتابة نصوص الإعلانات',
+        'تقرير أسبوعي بالنتائج وتكلفة كل رسالة أو طلب',
+        'ميزانية الإعلان منفصلة وتُدفع للمنصة مباشرة'
+      ],
+      price: 100,
+      message: 'مرحباً! أرغب في الاستفسار عن باقة الإعلانات بسعر 100$',
+      popular: true,
+      color: 'from-secondary-600 to-primary-600'
+    },
+    {
+      title: 'باقة المحتوى',
+      icon: '🎨',
+      features: [
+        'إدارة منصتي فيسبوك وإنستغرام مع خطة محتوى شهرية',
+        'إعادة تصميم صورة الغلاف وصورة الصفحة',
         '4 فيديوهات Reels',
-        'تصميم وكتابة محتوى احترافي (8 بوستات تفاعلية)',
-        'فيديو طويل (عدد 1)'
+        'تصميم وكتابة 8 منشورات تفاعلية',
+        'فيديو طويل واحد'
       ],
       price: 120,
-      message: 'مرحباً! أرغب في الاستفسار عن الباقة البرونزية بسعر 120$',
+      message: 'مرحباً! أرغب في الاستفسار عن باقة المحتوى بسعر 120$',
       popular: false,
       color: 'from-amber-700 to-yellow-600'
     },
     {
-      title: 'الباقة الفضية',
-      icon: '🥈',
+      title: 'الباقة الشاملة',
+      icon: '🚀',
       features: [
-        'دراسة المنافسين وخلق ميزة تنافسية',
-        'إدارة منصتي فيس بوك وإنستغرام (إعداد خطة محتوى احترافية)',
-        'إعادة تصميم صورة الكفر وصورة المنصة الشخصية',
-        '8 فيديوهات Reels',
-        'تصميم وكتابة محتوى احترافي (15 بوست تفاعلي)',
-        'فيديو طويل (عدد 2)',
-        'جلسات تصوير احترافية',
-        'إدارة الحملات الإعلانية'
-      ],
-      price: 150,
-      message: 'مرحباً! أرغب في الاستفسار عن الباقة الفضية بسعر 150$',
-      popular: true,
-      color: 'from-gray-500 to-gray-700'
-    },
-    {
-      title: 'الباقة الذهبية',
-      icon: '🥇',
-      features: [
-        'دراسة المنافسين وخلق ميزة تنافسية',
-        'إدارة منصات (فيس بوك + إنستغرام + واتساب أو تيك توك) مع خطة محتوى احترافية',
-        'إعادة تصميم صورة الكفر وصورة المنصة الشخصية',
-        '15 فيديو Reels',
-        'تصميم وكتابة محتوى احترافي (30 بوست تفاعلي)',
-        'فيديو طويل (عدد 4)',
-        'جلسات تصوير احترافية',
-        'إدارة الحملات الإعلانية'
+        'كل ما في باقة الإعلانات',
+        'دراسة المنافسين وبناء ميزة تنافسية',
+        'إدارة فيسبوك وإنستغرام وواتساب أو تيك توك مع خطة محتوى',
+        '15 فيديو Reels و30 منشوراً',
+        '4 فيديوهات طويلة',
+        'جلسات تصوير',
+        'ميزانية الإعلان منفصلة وتُدفع للمنصة مباشرة'
       ],
       price: 200,
-      message: 'مرحباً! أرغب في الاستفسار عن الباقة الذهبية بسعر 200$',
+      message: 'مرحباً! أرغب في الاستفسار عن الباقة الشاملة بسعر 200$',
       popular: false,
       color: 'from-yellow-400 to-amber-500'
     }
@@ -67,10 +66,7 @@ const PricingContent = () => {
   // دالة لفتح واتساب مع رسالة محددة
   const handleWhatsAppClick = (message: string) => {
     // استخدام رقم الواتساب من متغيرات البيئة أو استخدام رقم افتراضي
-    const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+963994661991'
-    const encodedMessage = encodeURIComponent(message)
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
-    window.open(whatsappUrl, '_blank')
+    window.open(whatsappLink(message), '_blank', 'noopener,noreferrer')
   }
 
   return (
@@ -110,18 +106,17 @@ const PricingContent = () => {
           {packages.map((pkg, index) => (
             <motion.div
               key={index}
-              className={`relative rounded-2xl overflow-hidden backdrop-blur-sm bg-white/90 dark:bg-gray-800/90 shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 flex flex-col h-full ${pkg.popular ? 'md:scale-120 md:-translate-y-6 z-10 shadow-2xl' : ''}`}
+              className={`relative rounded-2xl overflow-hidden backdrop-blur-sm bg-white/90 dark:bg-gray-800/90 shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 flex flex-col h-full ${pkg.popular ? 'md:scale-105 md:-translate-y-6 z-10 shadow-2xl ring-2 ring-secondary-500' : ''}`}
               initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={prefersReducedMotion ? {} : pkg.popular ? { y: -15, boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.3)' } : { y: -10, boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)' }}
-              style={pkg.popular ? { transform: 'scale(1.2)' } : {}}
             >
              {/* Popular Badge - Moved to left side with better spacing and contrast */}
               {pkg.popular && (
                 <div className="absolute top-4 left-4 bg-gradient-to-r from-pink-600 to-rose-600 text-white text-sm font-bold py-1.5 px-4 rounded-lg z-10 shadow-md">
-                  الأكثر مبيعًا
+                  الأنسب للبداية
                 </div>
               )}
 

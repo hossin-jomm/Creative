@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
+import { siteConfig, socialLinks as configSocialLinks } from '@/lib/siteConfig'
 const Footer = () => {
   const currentYear = new Date().getFullYear()
   const prefersReducedMotion = useReducedMotion()
@@ -19,53 +20,13 @@ const Footer = () => {
       { name: 'إدارة السوشال ميديا', href: '#services' },
       { name: 'التدريب الاحترافي', href: '#services' },
       { name: 'الهوية البصرية', href: '#services' }
-    ],
-    support: [
-      { name: 'مركز المساعدة', href: '#' },
-      { name: 'الأسئلة الشائعة', href: '#' },
-      { name: 'سياسة الخصوصية', href: '#' },
-      { name: 'شروط الاستخدام', href: '#' }
     ]
   }
 
-  const socialLinks = [
-    {
-      name: 'Facebook',
-      icon: 'fab fa-facebook-f',
-      url: 'https://facebook.com/',
-      color: 'hover:bg-blue-600'
-    },
-    {
-      name: 'Instagram',
-      icon: 'fab fa-instagram',
-      url: 'https://instagram.com/',
-      color: 'hover:bg-pink-600'
-    },
-    {
-      name: 'LinkedIn',
-      icon: 'fab fa-linkedin-in',
-      url: 'https://linkedin.com/company/',
-      color: 'hover:bg-blue-700'
-    },
-    {
-      name: 'Twitter',
-      icon: 'fab fa-twitter',
-      url: 'https://twitter.com/  ',
-      color: 'hover:bg-blue-400'
-    },
-    {
-      name: 'TikTok',
-      icon: 'fab fa-tiktok',
-      url: 'https://tiktok.com/@a',
-      color: 'hover:bg-black'
-    },
-    {
-      name: 'YouTube',
-      icon: 'fab fa-youtube',
-      url: 'https://youtube.com/@a',
-      color: 'hover:bg-red-600'
-    }
-  ]
+  const socialLinks = configSocialLinks.map(link => ({
+    ...link,
+    color: link.color.replace('hover:text-', 'hover:bg-').replace('hover:bg-black', 'hover:bg-gray-600'),
+  }))
 
   return (
     <footer className="bg-gray-900 text-white">
@@ -165,69 +126,29 @@ const Footer = () => {
             transition={{ duration: prefersReducedMotion ? 0 : 0.6, delay: prefersReducedMotion ? 0 : 0.3 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-lg font-display font-bold mb-6">الدعم</h3>
-            <ul className="space-y-3 mb-6">
-              {footerLinks.support.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-gray-300 hover:text-white transition-colors duration-200 hover:translate-x-1 inline-block"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <h3 className="text-lg font-display font-bold mb-6">تواصل معنا</h3>
             
             {/* Contact Info */}
             <div className="space-y-3">
-              <div className="flex items-center gap-3 text-gray-300">
-                <i className="fas fa-envelope w-4"></i>
-                <span className="text-sm">info@aicreative.com</span>
-              </div>
-              <div className="flex items-center gap-3 text-gray-300">
+              {siteConfig.email && (
+                <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-3 text-gray-300 hover:text-white">
+                  <i className="fas fa-envelope w-4"></i>
+                  <span className="text-sm">{siteConfig.email}</span>
+                </a>
+              )}
+              <a href={siteConfig.phoneLink} className="flex items-center gap-3 text-gray-300 hover:text-white">
                 <i className="fas fa-phone w-4"></i>
-                <span className="text-sm">+963 0994661991</span>
-              </div>
+                <span className="text-sm" dir="ltr">{siteConfig.phoneDisplay}</span>
+              </a>
               <div className="flex items-center gap-3 text-gray-300">
                 <i className="fas fa-map-marker-alt w-4"></i>
-                <span className="text-sm">حلب ، سوريا</span>
+                <span className="text-sm">{siteConfig.city}</span>
               </div>
             </div>
           </motion.div>
         </div>
       </div>
       
-      {/* Newsletter Section */}
-      <motion.div
-        className="border-t border-gray-800"
-        initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
-        viewport={{ once: true }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="text-center">
-            <h3 className="text-xl font-display font-bold mb-4">
-              اشترك في نشرتنا الإخبارية
-            </h3>
-            <p className="text-gray-300 mb-6">
-              احصل على آخر النصائح والاستراتيجيات التسويقية مباشرة في بريدك الإلكتروني
-            </p>
-            
-            <div className="max-w-md mx-auto flex gap-3">
-              <input
-                type="email"
-                placeholder="أدخل بريدك الإلكتروني"
-                className="flex-1 px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-transparent text-white placeholder-gray-400"
-              />
-              <button className="btn-primary px-6 py-3 whitespace-nowrap">
-                اشتراك
-              </button>
-            </div>
-          </div>
-        </div>
-      </motion.div>
       
       {/* Bottom Footer */}
       <div className="border-t border-gray-800">
@@ -237,17 +158,6 @@ const Footer = () => {
               © {currentYear} Ai Creative. جميع الحقوق محفوظة.
             </div>
             
-            <div className="flex items-center gap-6 text-sm text-gray-400">
-              <a href="#" className="hover:text-white transition-colors duration-200">
-                سياسة الخصوصية
-              </a>
-              <a href="#" className="hover:text-white transition-colors duration-200">
-                شروط الاستخدام
-              </a>
-              <a href="#" className="hover:text-white transition-colors duration-200">
-                ملفات تعريف الارتباط
-              </a>
-            </div>
           </div>
         </div>
       </div>

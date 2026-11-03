@@ -6,6 +6,7 @@ import { Clock, X } from 'lucide-react'
 import ErrorBoundary from './ErrorBoundary'
 import LoadingSpinner from './LoadingSpinner'
 import SectionDivider from './SectionDivider'
+import { whatsappLink } from '@/lib/siteConfig'
 import Lightbox from 'yet-another-react-lightbox'
 import Captions from 'yet-another-react-lightbox/plugins/captions'
 import type { Slide } from 'yet-another-react-lightbox'
@@ -157,7 +158,7 @@ const PortfolioContent = () => {
             <p className="text-xl text-gray-700 mb-2">نعمل على تحديث معرض أعمالنا</p>
             <p className="text-gray-500 mb-6">اطلب نماذج من أعمالنا السابقة مباشرة على واتساب</p>
             <a
-              href={`https://wa.me/${(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '963994661991').replace(/\D/g, '')}?text=${encodeURIComponent('مرحباً، أريد مشاهدة نماذج من أعمالكم')}`}
+              href={whatsappLink('مرحباً، أريد مشاهدة نماذج من أعمالكم')}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-8 py-3 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition-colors"

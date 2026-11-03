@@ -3,17 +3,14 @@
 import { motion, useReducedMotion } from 'framer-motion'
 import { MessageCircle } from 'lucide-react'
 import ErrorBoundary from './ErrorBoundary'
+import { whatsappLink } from '@/lib/siteConfig'
 
 const WhatsAppFloatContent = () => {
-  // استخدام متغيرات البيئة لرقم الواتساب والرسالة
-  const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+963994661991'
   const message = process.env.NEXT_PUBLIC_WHATSAPP_MESSAGE || 'مرحباً! أريد الاستفسار عن خدماتكم التسويقية.'
   const prefersReducedMotion = useReducedMotion()
-  
+
   const handleWhatsAppClick = () => {
-    const encodedMessage = encodeURIComponent(message)
-    const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${encodedMessage}`
-    window.open(whatsappUrl, '_blank')
+    window.open(whatsappLink(message), '_blank', 'noopener,noreferrer')
   }
 
   return (

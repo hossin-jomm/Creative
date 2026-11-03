@@ -22,7 +22,7 @@ const AboutContent = () => {
     {
       icon: Award,
       title: 'خبرتنا',
-      description: 'أكثر من 5 سنوات في مجال التسويق الرقمي والذكاء الاصطناعي'
+      description: 'خبرة عملية في الإعلانات المدفوعة وإدارة الحملات التسويقية'
     },
     {
       icon: Lightbulb,

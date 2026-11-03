@@ -69,6 +69,8 @@ describe('Validation Utilities', () => {
       expect(validation.isValidPhoneNumber('1234567890')).toBe(true);
       expect(validation.isValidPhoneNumber('+1-234-567-8901')).toBe(true);
       expect(validation.isValidPhoneNumber('(123) 456 7890')).toBe(true);
+      expect(validation.isValidPhoneNumber('+963 994 661 991')).toBe(true);
+      expect(validation.isValidPhoneNumber('0994661991')).toBe(true);
     });
 
     it('rejects invalid phone numbers', () => {
@@ -118,3 +120,13 @@ describe('Validation Utilities', () => {
     });
   });
 });
+import { normalizeWhatsAppNumber } from '@/lib/siteConfig'
+
+describe('normalizeWhatsAppNumber', () => {
+  it('produces wa.me-ready numbers', () => {
+    expect(normalizeWhatsAppNumber('+963 0994661991')).toBe('963994661991')
+    expect(normalizeWhatsAppNumber('+963994661991')).toBe('963994661991')
+    expect(normalizeWhatsAppNumber('0994661991')).toBe('963994661991')
+    expect(normalizeWhatsAppNumber('963994661991')).toBe('963994661991')
+  })
+})

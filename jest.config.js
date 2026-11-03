@@ -13,7 +13,8 @@ const customJestConfig = {
     '^@/components/(.*)$': '<rootDir>/components/$1',
     '^@/app/(.*)$': '<rootDir>/app/$1',
     '^@/utils/(.*)$': '<rootDir>/utils/$1',
-    '^@/data/(.*)$': '<rootDir>/data/$1'
+    '^@/data/(.*)$': '<rootDir>/data/$1',
+    '^@/lib/(.*)$': '<rootDir>/lib/$1'
   },
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
   transform: {

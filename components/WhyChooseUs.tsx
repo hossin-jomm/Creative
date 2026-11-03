@@ -52,23 +52,23 @@ const WhyChooseUs = () => {
     },
     {
       icon: Clock,
-      title: 'استجابة سريعة 24/7',
-      description: 'فريق دعم متاح على مدار الساعة للرد على استفساراتك وحل أي مشاكل فورياً',
+      title: 'استجابة سريعة',
+      description: 'نرد على استفساراتك عبر واتساب خلال ساعات العمل ونتابع حملتك أولاً بأول',
       color: 'text-gray-600'
     },
     {
       icon: Award,
-      title: 'خبرة وشهادات معتمدة',
-      description: 'فريق من الخبراء المعتمدين من Google و Facebook مع سنوات من الخبرة العملية',
+      title: 'خبرة عملية في الإعلانات',
+      description: 'خبرة فعلية في إدارة حملات فيسبوك وإنستغرام المدفوعة وقياس نتائجها بالأرقام',
       color: 'text-yellow-600'
     }
   ]
 
   const stats = [
-    { number: '98%' ,color: 'text-black font-bold', label: 'معدل رضا العملاء' },
-    { number: '300%',color: 'text-black font-bold' , label: 'متوسط زيادة المبيعات' },
-    { number: '24h',color: 'text-black font-bold' , label: 'وقت الاستجابة' },
-    { number: '500+',color: 'text-black font-bold' , label: 'مشروع ناجح' }
+    { number: 'أسبوعياً', color: 'text-black font-bold', label: 'تقرير بنتائج حملتك' },
+    { number: '2', color: 'text-black font-bold', label: 'تعديلات مجانية لكل تصميم' },
+    { number: '15 يوماً', color: 'text-black font-bold', label: 'إشعار مسبق فقط لإلغاء العقد' },
+    { number: 'سرية', color: 'text-black font-bold', label: 'بياناتك وحساباتك محمية' }
   ]
 
   return (
@@ -132,10 +132,10 @@ const WhyChooseUs = () => {
         >
           <div className="text-center mb-12">
             <h3 className="text-3xl font-display font-bold mb-4 gradient-text">
-              أرقام تتحدث عن نفسها
+              التزاماتنا معك
             </h3>
             <p className="text-lg text-gray-600">
-              إنجازاتنا مع عملائنا خلال السنوات الماضية
+              ما تحصل عليه مع كل اشتراك، مكتوب في العقد
             </p>
           </div>
           

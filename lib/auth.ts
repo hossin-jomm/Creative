@@ -6,10 +6,17 @@ import bcrypt from 'bcryptjs'
 //   ADMIN_PASSWORD_HASH  هاش bcrypt لكلمة المرور (أنشئه بـ: npm run hash-password -- "كلمة المرور")
 //   JWT_SECRET           نص عشوائي طويل (32 حرفاً على الأقل)
 
+// خطأ إعدادات: الرمز (code) يذكر اسم المتغير الناقص أو الخاطئ فقط، ولا يكشف أي قيمة أبداً
+export class AuthConfigError extends Error {
+  constructor(public code: string) {
+    super(code)
+  }
+}
+
 function requireEnv(name: string): string {
-  const value = process.env[name]
+  const value = process.env[name]?.trim()
   if (!value) {
-    throw new Error(`Missing required environment variable: ${name}`)
+    throw new AuthConfigError(`MISSING_${name}`)
   }
   return value
 }
@@ -17,9 +24,18 @@ function requireEnv(name: string): string {
 function getJwtSecret(): string {
   const secret = requireEnv('JWT_SECRET')
   if (secret.length < 32) {
-    throw new Error('JWT_SECRET must be at least 32 characters long')
+    throw new AuthConfigError('JWT_SECRET_TOO_SHORT')
   }
   return secret
+}
+
+function getPasswordHash(): string {
+  // يزيل علامات التنصيص إن نُسخت مع الهاش بالخطأ
+  const hash = requireEnv('ADMIN_PASSWORD_HASH').replace(/^['"]|['"]$/g, '')
+  if (!/^\$2[aby]\$\d{2}\$[./A-Za-z0-9]{53}$/.test(hash)) {
+    throw new AuthConfigError('ADMIN_PASSWORD_HASH_INVALID_FORMAT')
+  }
+  return hash
 }
 
 export function getAdminUsername(): string {
@@ -28,7 +44,8 @@ export function getAdminUsername(): string {
 
 export async function areCredentialsValid(username: string, password: string): Promise<boolean> {
   const expectedUsername = getAdminUsername()
-  const passwordHash = requireEnv('ADMIN_PASSWORD_HASH')
+  const passwordHash = getPasswordHash()
+  getJwtSecret() // نتحقق من المفتاح قبل كلمة المرور حتى يظهر خطأ الإعداد مباشرة
   // نتحقق من كلمة المرور دائماً حتى لو كان اسم المستخدم خاطئاً، كي لا يكشف زمن الرد أيهما الخاطئ
   const passwordOk = await bcrypt.compare(password, passwordHash)
   return passwordOk && username === expectedUsername

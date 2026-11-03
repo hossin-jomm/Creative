@@ -3,6 +3,7 @@ import './globals.css'
 import Header from '@/components/Header'
 import WhatsAppFloat from '@/components/WhatsAppFloat'
 import { Cairo, Poppins } from 'next/font/google'
+import { SITE_URL } from '@/lib/siteUrl'
 
 // تكوين الخط العربي
 const cairo = Cairo({
@@ -21,9 +22,19 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Ai Creative - وكالة التسويق الرقمي',
-  description: 'نبتكر حملات تسويقية قوية مدعومة بالذكاء الاصطناعي. خدمات إدارة السوشال ميديا، الحملات الإعلانية، والتدريب الاحترافي.',
-  keywords: 'تسويق رقمي, سوشال ميديا, إعلانات فيسبوك, إعلانات جوجل, تيك توك, موشن جرافيك',
+  metadataBase: new URL(SITE_URL),
+  title: 'Ai Creative - وكالة تسويق رقمي في حلب',
+  description: 'إعلانات فيسبوك وإنستغرام، إدارة السوشال ميديا، وتدريب على الإعلانات المدفوعة في حلب. تقرير أسبوعي بالنتائج وتواصل مباشر عبر واتساب.',
+  keywords: 'تسويق رقمي حلب, إعلانات فيسبوك, إعلانات إنستغرام, سوشال ميديا, ميديا باير, تدريب إعلانات, سوريا',
+  openGraph: {
+    type: 'website',
+    locale: 'ar_SY',
+    url: SITE_URL,
+    siteName: 'Ai Creative',
+    title: 'Ai Creative - وكالة تسويق رقمي في حلب',
+    description: 'إعلانات فيسبوك وإنستغرام، إدارة السوشال ميديا، وتدريب على الإعلانات المدفوعة.',
+  },
+  twitter: { card: 'summary_large_image' },
 }
 
 export default function RootLayout({
@@ -34,7 +45,6 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" className={`${cairo.variable} ${poppins.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.ico" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
       </head>
       <body className="font-cairo bg-white">

@@ -1,12 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle } from 'lucide-react'
 import ErrorBoundary from './ErrorBoundary'
-import LoadingSpinner from './LoadingSpinner'
 import SectionDivider from './SectionDivider'
 import * as validation from '@/utils/validation'
+import { siteConfig, socialLinks, whatsappLink } from '@/lib/siteConfig'
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -16,7 +16,6 @@ const ContactForm = () => {
     service: '',
     message: ''
   })
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [errors, setErrors] = useState({
     name: '',
@@ -48,9 +47,7 @@ const ContactForm = () => {
         }
         break
       case 'email':
-        if (!validation.isNotEmpty(value)) {
-          errorMessage = validation.createErrorMessage('البريد الإلكتروني', 'required')
-        } else if (!validation.isValidEmail(value)) {
+        if (value && !validation.isValidEmail(value)) {
           errorMessage = validation.createErrorMessage('البريد الإلكتروني', 'email')
         }
         break
@@ -96,86 +93,38 @@ const ContactForm = () => {
       return
     }
     
-    setIsSubmitting(true)
-    
-    try {
-      // محاكاة إرسال النموذج
-      // في التطبيق الحقيقي، يمكن استبدال هذا بطلب API
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      
-      setIsSubmitted(true)
-      setFormData({ name: '', email: '', phone: '', service: '', message: '' })
-      setErrors({ name: '', email: '', phone: '', message: '' })
-      
-      // إخفاء رسالة النجاح بعد 5 ثوان
-      setTimeout(() => {
-        setIsSubmitted(false)
-      }, 5000)
-    } catch (error) {
-      console.error('Error submitting form:', error)
-    } finally {
-      setIsSubmitting(false)
+    const serviceLabels: Record<string, string> = {
+      ads: 'الحملات الإعلانية',
+      social: 'إدارة السوشال ميديا',
+      training: 'التدريب',
+      branding: 'الهوية البصرية',
+      video: 'الموشن جرافيك',
+      other: 'أخرى',
     }
+    const lines = [
+      'مرحباً Ai Creative،',
+      `الاسم: ${formData.name}`,
+      formData.phone && `الهاتف: ${formData.phone}`,
+      formData.email && `البريد: ${formData.email}`,
+      formData.service && `الخدمة: ${serviceLabels[formData.service] || formData.service}`,
+      '',
+      formData.message,
+    ].filter((line): line is string => typeof line === 'string' && line !== '')
+
+    // نفتح واتساب برسالة جاهزة: هكذا تصل كل رسالة فعلاً بدل أن تضيع
+    window.open(whatsappLink(lines.join('\n')), '_blank', 'noopener,noreferrer')
+    setIsSubmitted(true)
+    setFormData({ name: '', email: '', phone: '', service: '', message: '' })
+    setErrors({ name: '', email: '', phone: '', message: '' })
+    setTimeout(() => setIsSubmitted(false), 8000)
   }
 
   const contactInfo = [
-    {
-      icon: Mail,
-      title: 'البريد الإلكتروني',
-      value: 'info@aicreative.com',
-      link: 'mailto:info@aicreative.com'
-    },
-    {
-      icon: Phone,
-      title: 'رقم الهاتف',
-      value: '+963 994661991',
-      link: 'tel:+963994661991'
-    },
-    {
-      icon: MapPin,
-      title: 'العنوان',
-      value: 'حلب، سوريا',
-      link: '#'
-    }
-  ]
-
-  const socialLinks = [
-    {
-      name: 'Facebook',
-      icon: 'fab fa-facebook-f',
-      url: 'https://facebook.com/',
-      color: 'hover:text-blue-600'
-    },
-    {
-      name: 'Instagram',
-      icon: 'fab fa-instagram',
-      url: 'https://instagram.com/',
-      color: 'hover:text-pink-600'
-    },
-    {
-      name: 'LinkedIn',
-      icon: 'fab fa-linkedin-in',
-      url: 'https://linkedin.com/company/',
-      color: 'hover:text-blue-700'
-    },
-    {
-      name: 'Twitter',
-      icon: 'fab fa-twitter',
-      url: 'https://twitter.com/',
-      color: 'hover:text-blue-400'
-    },
-    {
-      name: 'TikTok',
-      icon: 'fab fa-tiktok',
-      url: 'https://tiktok.com/',
-      color: 'hover:text-black'
-    },
-    {
-      name: 'YouTube',
-      icon: 'fab fa-youtube',
-      url: 'https://youtube.com/',
-      color: 'hover:text-red-600'
-    }
+    { icon: Phone, title: 'رقم الهاتف وواتساب', value: siteConfig.phoneDisplay, link: siteConfig.phoneLink },
+    ...(siteConfig.email
+      ? [{ icon: Mail, title: 'البريد الإلكتروني', value: siteConfig.email, link: `mailto:${siteConfig.email}` }]
+      : []),
+    { icon: MapPin, title: 'العنوان', value: siteConfig.city, link: '#contact' },
   ]
 
   return (
@@ -221,7 +170,7 @@ const ContactForm = () => {
                 animate={{ opacity: 1, y: 0 }}
               >
                 <CheckCircle className="w-5 h-5 text-green-600" />
-                <p className="text-green-700">تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.</p>
+                <p className="text-green-700">فتحنا لك واتساب برسالتك جاهزة، اضغط إرسال هناك لتصلنا مباشرة.</p>
               </motion.div>
             )}
             
@@ -250,14 +199,13 @@ const ContactForm = () => {
                 
                 <div>
                   <label className="block text-gray-700 font-semibold mb-2">
-                    البريد الإلكتروني *
+                    البريد الإلكتروني (اختياري)
                   </label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    required
                     className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-transparent transition-all duration-200 ${errors.email ? 'border-red-500 bg-red-50' : 'border-gray-300'}`}
                     placeholder="example@email.com"
                   />
@@ -335,20 +283,10 @@ const ContactForm = () => {
               
               <button
                 type="submit"
-                disabled={isSubmitting}
                 className="w-full btn-primary py-4 text-lg font-semibold disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-3"
               >
-                {isSubmitting ? (
-                  <>
-                    <LoadingSpinner size="small" color="white" />
-                    جاري الإرسال...
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    إرسال الرسالة
-                  </>
-                )}
+                <Send className="w-5 h-5" />
+                إرسال عبر واتساب
               </button>
             </form>
           </motion.div>
@@ -391,6 +329,7 @@ const ContactForm = () => {
             </div>
             
             {/* Social Media */}
+            {socialLinks.length > 0 && (
             <div className="bg-white rounded-3xl p-8 shadow-xl">
               <h3 className="text-2xl font-display font-bold mb-6 gradient-text">
                 تابعنا على
@@ -415,6 +354,7 @@ const ContactForm = () => {
                 ))}
               </div>
             </div>
+            )}
             
             {/* Working Hours */}
             <div className="bg-gradient-to-r from-secondary-600 to-primary-600 rounded-3xl p-8 text-white">

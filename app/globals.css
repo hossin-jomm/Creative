@@ -23,7 +23,16 @@
     text-rendering: optimizeLegibility;
     color: #333;
     background-color: #fff;
+  }
+
+  /* حركات الدخول الجانبية (framer-motion) كانت توسّع الصفحة على الجوال وتقص الشعار */
+  html, body {
     overflow-x: hidden;
+  }
+  @supports (overflow: clip) {
+    html, body {
+      overflow-x: clip;
+    }
   }
   
   img, picture, video, canvas, svg {

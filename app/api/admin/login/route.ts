@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { areCredentialsValid, getAdminUsername, signAdminToken } from '@/lib/auth'
+import { areCredentialsValid, getAdminUsername, signAdminToken, AuthConfigError } from '@/lib/auth'
 
 export const dynamic = 'force-dynamic'
 
@@ -37,6 +37,13 @@ export async function POST(request: NextRequest) {
       { status: 200 }
     )
   } catch (error) {
+    if (error instanceof AuthConfigError) {
+      console.error('Admin auth misconfigured:', error.code)
+      return NextResponse.json(
+        { message: 'إعدادات الدخول على الخادم غير مكتملة', code: error.code },
+        { status: 500 }
+      )
+    }
     console.error('Login error:', error)
     return NextResponse.json(
       { message: 'حدث خطأ في الخادم' },

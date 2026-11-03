@@ -36,7 +36,7 @@ const ServicesContent = () => {
       icon: GraduationCap,
       title: 'التدريب الاحترافي',
       description: 'برامج تدريبية متخصصة في التسويق الرقمي لتأهيل الشباب وخلق فرص عمل حقيقية',
-      features: ['Facebook Ads', 'Google Ads', 'TikTok Ads', 'شهادات معتمدة'],
+      features: ['Facebook Ads', 'Google Ads', 'TikTok Ads', 'تطبيق عملي'],
       color: 'from-green-500 to-teal-600'
     },
     {

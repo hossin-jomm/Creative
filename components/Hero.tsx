@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
 import ErrorBoundary from './ErrorBoundary'
 import SectionDivider from './SectionDivider'
+import { whatsappLink } from '@/lib/siteConfig'
 
 const HeroContent = () => {
   // استخدام hook لمعرفة ما إذا كان المستخدم يفضل تقليل الحركة
@@ -53,12 +54,9 @@ const HeroContent = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <a
-              onClick={() => {
-                const phoneNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '+963994661991'
-                const message = encodeURIComponent('السلام عليكم\nعندي فضول أن أعرف أكثر!\nكيف بتقدر حلول AI Creative الإبداعية تضيف قيمة لمشروع مثل [اكتب نوع المشروع هنا]؟')
-                const whatsappUrl = `https://wa.me/${phoneNumber.replace(/\D/g, '')}?text=${message}`
-                window.open(whatsappUrl, '_blank')
-              }}
+              href={whatsappLink('السلام عليكم\nعندي فضول أن أعرف أكثر!\nكيف بتقدر حلول AI Creative الإبداعية تضيف قيمة لمشروع مثل [اكتب نوع المشروع هنا]؟')}
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary text-base md:text-lg px-8 py-4 inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:opacity-90 transition-all shadow-lg cursor-pointer"
             >
               <span>تواصل معنا الآن</span>
@@ -83,20 +81,20 @@ const HeroContent = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           <div className="text-center p-4 bg-white/5 rounded-xl backdrop-blur-sm hover:bg-white/10 transition-all">
-            <div className="text-3xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg gradient-text bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent">500+</div>
-            <div className="text-base md:text-lg text-gray-300">عميل راضي</div>
+            <div className="text-3xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg gradient-text bg-gradient-to-r from-yellow-400 to-pink-400 bg-clip-text text-transparent">أسبوعياً</div>
+            <div className="text-base md:text-lg text-gray-300">تقرير بنتائج حملتك</div>
           </div>
           <div className="text-center p-4 bg-white/5 rounded-xl backdrop-blur-sm hover:bg-white/10 transition-all">
-            <div className="text-3xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg gradient-text bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">1000+</div>
-            <div className="text-base md:text-lg text-gray-300">حملة ناجحة</div>
+            <div className="text-3xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg gradient-text bg-gradient-to-r from-pink-400 to-purple-400 bg-clip-text text-transparent">2</div>
+            <div className="text-base md:text-lg text-gray-300">تعديلات مجانية لكل تصميم</div>
           </div>
           <div className="text-center p-4 bg-white/5 rounded-xl backdrop-blur-sm hover:bg-white/10 transition-all">
-            <div className="text-3xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg gradient-text bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">5+</div>
-            <div className="text-base md:text-lg text-gray-300">سنوات خبرة</div>
+            <div className="text-3xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg gradient-text bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">حلب</div>
+            <div className="text-base md:text-lg text-gray-300">فريق محلي قريب منك</div>
           </div>
           <div className="text-center p-4 bg-white/5 rounded-xl backdrop-blur-sm hover:bg-white/10 transition-all">
-            <div className="text-3xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg gradient-text bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">24/7</div>
-            <div className="text-base md:text-lg text-gray-300">دعم فني</div>
+            <div className="text-3xl md:text-4xl font-bold text-white mb-3 drop-shadow-lg gradient-text bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">واتساب</div>
+            <div className="text-base md:text-lg text-gray-300">تواصل مباشر وسريع</div>
           </div>
         </motion.div>
       </div>
