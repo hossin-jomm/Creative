@@ -36,10 +36,10 @@ const Footer = () => {
           {/* Company Info */}
           <motion.div
             className="lg:col-span-1"
-            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '0px 0px 120px 0px' }}
           >
            {/* Logo */}
             <div className="flex items-center mb-6">
@@ -77,10 +77,10 @@ const Footer = () => {
           
           {/* Company Links */}
           <motion.div
-            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: prefersReducedMotion ? 0 : 0.6, delay: prefersReducedMotion ? 0 : 0.1 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '0px 0px 120px 0px' }}
           >
             <h3 className="text-lg font-display font-bold mb-6">الشركة</h3>
             <ul className="space-y-3">
@@ -99,10 +99,10 @@ const Footer = () => {
           
           {/* Services Links */}
           <motion.div
-            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: prefersReducedMotion ? 0 : 0.6, delay: prefersReducedMotion ? 0 : 0.2 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '0px 0px 120px 0px' }}
           >
             <h3 className="text-lg font-display font-bold mb-6">خدماتنا</h3>
             <ul className="space-y-3">
@@ -121,10 +121,10 @@ const Footer = () => {
           
           {/* Support Links */}
           <motion.div
-            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: prefersReducedMotion ? 0 : 0.6, delay: prefersReducedMotion ? 0 : 0.3 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '0px 0px 120px 0px' }}
           >
             <h3 className="text-lg font-display font-bold mb-6">تواصل معنا</h3>
             
@@ -170,7 +170,7 @@ const Footer = () => {
         whileTap={{ scale: 0.9 }}
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 1 }}
+        transition={{ duration: 0.4, delay: 1 }}
       >
         <i className="fas fa-arrow-up"></i>
       </motion.button>

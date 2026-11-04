@@ -46,8 +46,10 @@ module.exports = {
         },
       },
       fontFamily: {
-        cairo: ['var(--font-cairo)', 'system-ui', 'sans-serif'],
-        poppins: ['var(--font-poppins)', 'system-ui', 'sans-serif'],
+        cairo: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        body: ['var(--font-body)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'var(--font-body)', 'system-ui', 'sans-serif'],
+        poppins: ['var(--font-display)', 'system-ui', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',

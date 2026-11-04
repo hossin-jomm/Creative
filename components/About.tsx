@@ -11,23 +11,23 @@ const AboutContent = () => {
   const features = [
     {
       icon: Target,
-      title: 'رؤيتنا',
-      description: 'أن نكون الوكالة الرائدة في التسويق الرقمي بالمنطقة العربية'
+      title: 'نركّز على النتيجة',
+      description: 'نقيس كل حملة بعدد الرسائل والطلبات وتكلفتها، لا بعدد الإعجابات'
     },
     {
       icon: Users,
-      title: 'مهمتنا',
-      description: 'تمكين الشباب السوري من خلال التدريب وخلق فرص عمل مستدامة'
+      title: 'فريق محلي',
+      description: 'نعرف سوق حلب وزبائنه، ونكتب إعلانك بلغتهم'
     },
     {
       icon: Award,
-      title: 'خبرتنا',
-      description: 'خبرة عملية في الإعلانات المدفوعة وإدارة الحملات التسويقية'
+      title: 'خبرة في الإعلانات',
+      description: 'خبرة عملية في إدارة حملات فيسبوك وإنستغرام المدفوعة وضبط استهدافها'
     },
     {
       icon: Lightbulb,
-      title: 'ابتكارنا',
-      description: 'استخدام أحدث تقنيات الذكاء الاصطناعي في حملاتنا التسويقية'
+      title: 'أسرع بالذكاء الاصطناعي',
+      description: 'نستخدم أدوات الذكاء الاصطناعي لننتج تصاميم ونصوصاً أكثر في وقت أقل'
     }
   ]
 
@@ -37,10 +37,10 @@ const AboutContent = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
           <motion.div
-            initial={prefersReducedMotion ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true, margin: '0px 0px 120px 0px' }}
           >
             <h2 className="text-4xl lg:text-5xl font-display font-bold mb-6">
               من نحن؟
@@ -50,23 +50,21 @@ const AboutContent = () => {
             </h2>
             
             <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-              نحن وكالة تسويق رقمي متخصصة في إنشاء وإدارة الحملات التسويقية المبتكرة 
-              باستخدام أحدث تقنيات الذكاء الاصطناعي. نؤمن بقوة التسويق الرقمي في 
-              تحويل الأعمال وتحقيق النمو المستدام.
+              فريق تسويق رقمي من حلب، نساعد المطاعم والمتاجر والعيادات والمشاريع الصغيرة
+              على جذب زبائن جدد من فيسبوك وإنستغرام: نكتب الإعلان، نصمّمه، نطلقه، ونتابع أرقامه.
             </p>
             
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              هدفنا الأساسي هو تدريب وتأهيل الشباب السوري في مجال التسويق الرقمي 
-              وخلق فرص عمل حقيقية تساهم في بناء مستقبل أفضل. نقدم برامج تدريبية 
-              شاملة تغطي جميع جوانب التسويق الحديث.
+              نتابع حملتك أولاً بأول، ونرد عليك عبر واتساب خلال ساعات العمل.
+              وكل أسبوع يصلك تقرير واضح: ما الذي صرفناه، وماذا جلب لك.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-4 sm:justify-start">
               <a href="#services" className="btn-primary">
-                اكتشف خدماتنا
+                شاهد خدماتنا
               </a>
               <a href="#contact" className="btn-secondary">
-                ابدأ مشروعك معنا
+                اسألنا عن مشروعك
               </a>
             </div>
           </motion.div>
@@ -74,10 +72,10 @@ const AboutContent = () => {
           {/* Features Grid */}
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 gap-6"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            viewport={{ once: true, margin: '0px 0px 120px 0px' }}
           >
             {features.map((feature, index) => {
               const Icon = feature.icon
@@ -85,10 +83,10 @@ const AboutContent = () => {
                 <motion.div
                   key={index}
                   className="card p-6 text-center"
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  viewport={{ once: true, margin: '0px 0px 120px 0px' }}
                   whileHover={{ scale: 1.05 }}
                 >
                   <div className="w-16 h-16 bg-gradient-to-r from-secondary-500 to-primary-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -106,50 +104,7 @@ const AboutContent = () => {
           </motion.div>
         </div>
         
-        {/* Company Values */}
-        <motion.div
-          className="mt-20 text-center"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <h3 className="text-3xl font-display font-bold mb-8 gradient-text">
-            قيمنا الأساسية
-          </h3>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="p-6">
-              <div className="w-20 h-20 bg-gradient-to-r from-secondary-500 to-primary-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="fas fa-handshake text-2xl text-white"></i>
-              </div>
-              <h4 className="text-xl font-semibold mb-3">الشراكة الحقيقية</h4>
-              <p className="text-gray-600">
-                نؤمن بأن نجاح عملائنا هو نجاحنا، لذلك نعمل كشركاء حقيقيين في رحلة النمو
-              </p>
-            </div>
-            
-            <div className="p-6">
-              <div className="w-20 h-20 bg-gradient-to-r from-primary-500 to-accent-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="fas fa-rocket text-2xl text-white"></i>
-              </div>
-              <h4 className="text-xl font-semibold mb-3">الابتكار المستمر</h4>
-              <p className="text-gray-600">
-                نواكب أحدث التطورات في عالم التسويق الرقمي والذكاء الاصطناعي
-              </p>
-            </div>
-            
-            <div className="p-6">
-              <div className="w-20 h-20 bg-gradient-to-r from-accent-500 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i className="fas fa-heart text-2xl text-white"></i>
-              </div>
-              <h4 className="text-xl font-semibold mb-3">المسؤولية المجتمعية</h4>
-              <p className="text-gray-600">
-                نساهم في تنمية المجتمع من خلال تدريب الشباب وخلق فرص عمل جديدة
-              </p>
-            </div>
-          </div>
-        </motion.div>
+        
       </div>
       
       {/* Section Divider */}

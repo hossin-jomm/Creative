@@ -18,49 +18,37 @@ const WhyChooseUs = () => {
       icon: Target,
       title: 'استراتيجيات تسويق مستهدفة',
       description: 'نحلل جمهورك المستهدف بدقة ونضع استراتيجيات مخصصة تحقق أفضل النتائج',
-      color: 'text-blue-600'
+      color: 'text-secondary-600'
     },
     {
       icon: Sparkles,
       title: 'تصميمات فريدة وجودة عالية',
       description: 'فريق إبداعي متخصص يقدم تصميمات مبتكرة ومحتوى عالي الجودة يميز علامتك التجارية',
-      color: 'text-purple-600'
-    },
-    {
-      icon: HeadphonesIcon,
-      title: 'خدمة ما بعد البيع المتميزة',
-      description: 'دعم فني مستمر ومتابعة دورية لضمان تحقيق أهدافك وتطوير أدائك باستمرار',
-      color: 'text-green-600'
-    },
-    {
-      icon: MessageSquare,
-      title: 'تدريب العملاء على البيع بالرسائل',
-      description: 'برامج تدريبية متخصصة لتعليم فن البيع عبر المحادثات وزيادة معدلات التحويل',
-      color: 'text-orange-600'
+      color: 'text-secondary-600'
     },
     {
       icon: TrendingUp,
-      title: 'نتائج مثبتة وقابلة للقياس',
-      description: 'تقارير شفافة ومفصلة تظهر تحسن الأداء وعائد الاستثمار بوضوح',
-      color: 'text-red-600'
+      title: 'أرقام واضحة كل أسبوع',
+      description: 'تقرير أسبوعي يوضح ما صُرف على الإعلان، وكم رسالة أو طلباً جلب، وتكلفة كل واحد',
+      color: 'text-secondary-600'
     },
     {
       icon: Shield,
-      title: 'أمان وموثوقية عالية',
-      description: 'حماية كاملة لبياناتك وحساباتك مع التزام تام بمعايير الأمان والخصوصية',
-      color: 'text-indigo-600'
+      title: 'سرية بياناتك',
+      description: 'لا نشارك بيانات صفحتك أو زبائنك مع أي طرف، والتزامنا بذلك مكتوب في العقد',
+      color: 'text-secondary-600'
     },
     {
       icon: Clock,
       title: 'استجابة سريعة',
       description: 'نرد على استفساراتك عبر واتساب خلال ساعات العمل ونتابع حملتك أولاً بأول',
-      color: 'text-gray-600'
+      color: 'text-secondary-600'
     },
     {
       icon: Award,
       title: 'خبرة عملية في الإعلانات',
       description: 'خبرة فعلية في إدارة حملات فيسبوك وإنستغرام المدفوعة وقياس نتائجها بالأرقام',
-      color: 'text-yellow-600'
+      color: 'text-secondary-600'
     }
   ]
 
@@ -77,10 +65,10 @@ const WhyChooseUs = () => {
         {/* Header */}
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          viewport={{ once: true, margin: '0px 0px 120px 0px' }}
         >
           <h2 className="text-4xl lg:text-5xl font-display font-bold mb-6">
             لماذا تختار
@@ -102,10 +90,10 @@ const WhyChooseUs = () => {
               <motion.div
                 key={index}
                 className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 group"
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true, margin: '0px 0px 120px 0px' }}
                 whileHover={{ y: -10 }}
               >
                 <div className="mb-4">
@@ -125,10 +113,10 @@ const WhyChooseUs = () => {
         {/* Stats Section */}
         <motion.div
           className="bg-white rounded-3xl p-8 lg:p-12 shadow-xl"
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          viewport={{ once: true, margin: '0px 0px 120px 0px' }}
         >
           <div className="text-center mb-12">
             <h3 className="text-3xl font-display font-bold mb-4 gradient-text">
@@ -146,8 +134,8 @@ const WhyChooseUs = () => {
                 className="text-center"
                 initial={{ opacity: 0, scale: 0.5 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true, margin: '0px 0px 120px 0px' }}
               >
                 <div className={`text-4xl lg:text-5xl font-bold ${stat.color} mb-2`}>
                   {stat.number}
@@ -163,10 +151,10 @@ const WhyChooseUs = () => {
         {/* Process Section */}
         <motion.div
           className="mt-20"
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          viewport={{ once: true, margin: '0px 0px 120px 0px' }}
         >
           <div className="text-center mb-12">
             <h3 className="text-3xl font-display font-bold mb-4 gradient-text">
@@ -187,10 +175,10 @@ const WhyChooseUs = () => {
               <motion.div
                 key={index}
                 className="text-center relative"
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true, margin: '0px 0px 120px 0px' }}
               >
                 <div className="w-16 h-16 bg-gradient-to-r from-secondary-500 to-primary-500 rounded-full flex items-center justify-center mx-auto mb-4 text-white font-bold text-lg">
                   {process.step}

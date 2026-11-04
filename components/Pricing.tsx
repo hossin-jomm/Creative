@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useReducedMotion } from 'framer-motion'
-import { Check } from 'lucide-react'
+import { Check, Megaphone, Palette, Rocket } from 'lucide-react'
 import ErrorBoundary from './ErrorBoundary'
 import SectionDivider from './SectionDivider'
 import { whatsappLink } from '@/lib/siteConfig'
@@ -14,7 +14,7 @@ const PricingContent = () => {
   const packages = [
     {
       title: 'باقة الإعلانات',
-      icon: '📣',
+      icon: Megaphone,
       features: [
         'إعداد وإدارة حملة إعلانية على فيسبوك وإنستغرام',
         'دراسة جمهورك المستهدف وضبط الاستهداف',
@@ -27,11 +27,11 @@ const PricingContent = () => {
       price: 200,
       message: 'مرحباً! أرغب في الاستفسار عن باقة الإعلانات بسعر 200$',
       popular: true,
-      color: 'from-secondary-600 to-primary-600'
+      color: 'from-secondary-600 to-secondary-700'
     },
     {
       title: 'باقة المحتوى',
-      icon: '🎨',
+      icon: Palette,
       features: [
         'إدارة منصتي فيسبوك وإنستغرام مع خطة محتوى شهرية',
         'إعادة تصميم صورة الغلاف وصورة الصفحة',
@@ -42,11 +42,11 @@ const PricingContent = () => {
       price: 350,
       message: 'مرحباً! أرغب في الاستفسار عن باقة المحتوى بسعر 350$',
       popular: false,
-      color: 'from-amber-700 to-yellow-600'
+      color: 'from-slate-800 to-slate-700'
     },
     {
       title: 'الباقة الشاملة',
-      icon: '🚀',
+      icon: Rocket,
       features: [
         'كل ما في باقة الإعلانات',
         'دراسة المنافسين وبناء ميزة تنافسية',
@@ -59,7 +59,7 @@ const PricingContent = () => {
       price: 420,
       message: 'مرحباً! أرغب في الاستفسار عن الباقة الشاملة بسعر 420$',
       popular: false,
-      color: 'from-yellow-400 to-amber-500'
+      color: 'from-slate-800 to-slate-700'
     }
   ]
 
@@ -70,7 +70,7 @@ const PricingContent = () => {
   }
 
   return (
-    <section id="pricing" className="relative py-16 md:py-24 overflow-hidden bg-[#f4f5f8] dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800">
+    <section id="pricing" className="relative py-16 md:py-24 overflow-hidden bg-[#f4f5f8]">
       {/* Background Elements - Similar to Hero.tsx */}
      <div className="absolute inset-0 opacity-30">
         <div className="absolute top-20 left-10 w-72 h-72 bg-secondary-600/40 rounded-full blur-3xl animate-float" />
@@ -82,22 +82,22 @@ const PricingContent = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold mb-10"
-            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            className="text-3xl md:text-5xl font-display font-bold mb-6 text-gray-900"
+            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            viewport={{ once: true, margin: '0px 0px 120px 0px' }}
+            transition={{ duration: 0.4 }}
           >
-            الأسعار
+            باقات واضحة، بسعر ثابت شهرياً
           </motion.h2>
           <motion.p 
-            className="text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-lg"
-            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            className="text-gray-600 max-w-3xl mx-auto text-lg"
+            initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true, margin: '0px 0px 120px 0px' }}
+            transition={{ duration: 0.4, delay: 0.1 }}
           >
-            اختر الباقة المناسبة لاحتياجاتك التسويقية وانطلق نحو النجاح مع خدماتنا الاحترافية
+            بدون رسوم مخفية. ميزانية الإعلان منفصلة وتدفعها للمنصة مباشرة، وتستطيع الإلغاء بإشعار 15 يوماً.
           </motion.p>
         </div>
 
@@ -106,42 +106,42 @@ const PricingContent = () => {
           {packages.map((pkg, index) => (
             <motion.div
               key={index}
-              className={`relative rounded-2xl overflow-hidden backdrop-blur-sm bg-white/90 dark:bg-gray-800/90 shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300 flex flex-col h-full ${pkg.popular ? 'md:scale-105 md:-translate-y-6 z-10 shadow-2xl ring-2 ring-secondary-500' : ''}`}
-              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              className={`relative rounded-2xl overflow-hidden backdrop-blur-sm bg-white/90 shadow-xl border border-gray-200 transition-all duration-300 flex flex-col h-full ${pkg.popular ? 'md:-translate-y-4 z-10 shadow-2xl ring-2 ring-secondary-500' : ''}`}
+              initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true, margin: '0px 0px 120px 0px' }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
               whileHover={prefersReducedMotion ? {} : pkg.popular ? { y: -15, boxShadow: '0 30px 60px -15px rgba(0, 0, 0, 0.3)' } : { y: -10, boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)' }}
             >
              {/* Popular Badge - Moved to left side with better spacing and contrast */}
               {pkg.popular && (
-                <div className="absolute top-4 left-4 bg-gradient-to-r from-pink-600 to-rose-600 text-white text-sm font-bold py-1.5 px-4 rounded-lg z-10 shadow-md">
+                <div className="absolute top-4 left-4 bg-white text-secondary-700 text-sm font-bold py-1.5 px-4 rounded-lg z-10 shadow-md">
                   الأنسب للبداية
                 </div>
               )}
 
               {/* Card Header */}
-              <div className={`p-6 bg-gradient-to-r ${pkg.color} text-white ${pkg.popular ? 'border-b-4 border-pink-500' : ''}`}>
-                <div className={`${pkg.popular ? 'text-4xl md:text-5xl' : 'text-2xl md:text-3xl'} font-bold mb-1 flex items-center gap-2`}>
+              <div className={`p-6 bg-gradient-to-r ${pkg.color} text-white `}>
+                <div className="text-2xl md:text-3xl font-display font-bold mb-1 flex items-center gap-3">
+                  <pkg.icon className="w-7 h-7 shrink-0" aria-hidden="true" />
                   <span>{pkg.title}</span>
-                  <span>{pkg.icon}</span>
                 </div>
-              
-                <div className={`mt-4 ${pkg.popular ? 'text-5xl md:text-6xl' : 'text-3xl md:text-4xl'} font-bold`}>
+
+                <div className="mt-4 text-4xl md:text-5xl font-display font-bold">
                   ${pkg.price}
-                  <span className={`${pkg.popular ? 'text-xl md:text-2xl' : 'text-lg md:text-xl'} font-normal opacity-80`}> / شهرياً</span>
+                  <span className="text-lg md:text-xl font-normal opacity-80"> / شهرياً</span>
                 </div>
               </div>
 
               {/* Features List */}
-              <div className={`p-6 flex-grow ${pkg.popular ? 'bg-gray-50 dark:bg-gray-900' : ''}`}>
+              <div className={`p-6 flex-grow ${pkg.popular ? 'bg-gray-50' : ''}`}>
                 <ul className="space-y-4 mb-8">
                   {pkg.features.map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-2">
-                      <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-500 flex items-center justify-center mt-1">
+                      <div className="flex-shrink-0 w-5 h-5 rounded-full bg-accent-600 flex items-center justify-center mt-1">
                         <Check className="w-3 h-3 text-white" />
                       </div>
-                      <span className={`text-gray-700 dark:text-gray-300 ${pkg.popular ? 'text-base md:text-lg' : 'text-sm md:text-base'}`}>{feature}</span>
+                      <span className="text-gray-700 text-sm md:text-base">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -151,9 +151,9 @@ const PricingContent = () => {
               <div className="p-6 pt-0 mt-auto">
                 <button
                   onClick={() => handleWhatsAppClick(pkg.message)}
-                  className={`w-full py-3 px-6 rounded-lg bg-gradient-to-r ${pkg.popular ? 'from-pink-500 to-rose-600 hover:from-pink-600 hover:to-rose-700' : 'from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700'} text-white font-medium transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-opacity-50 shadow-lg hover:shadow-xl ${pkg.popular ? 'text-lg md:text-xl font-bold' : 'text-base md:text-lg'}`}
+                  className={`w-full py-3 px-6 rounded-lg bg-gradient-to-r ${pkg.popular ? 'from-secondary-600 to-secondary-700' : 'from-slate-800 to-slate-700'} text-white font-medium transition-all duration-300 transform hover:brightness-110 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary-300 focus:ring-opacity-50 shadow-lg hover:shadow-xl text-base md:text-lg font-semibold`}
                 >
-                  اطلبها الآن
+                  اسأل عن هذه الباقة عبر واتساب
                 </button>
               </div>
             </motion.div>

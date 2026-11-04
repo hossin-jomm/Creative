@@ -133,20 +133,20 @@ const ContactForm = () => {
         {/* Header */}
         <motion.div
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+          viewport={{ once: true, margin: '0px 0px 120px 0px' }}
         >
           <h2 className="text-4xl lg:text-5xl font-display font-bold mb-6">
-            تواصل
+            أخبرنا عن مشروعك
             <span className="block gradient-text mt-2">
-              معنا الآن
+              ونقترح عليك البداية المناسبة
             </span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            هل أنت مستعد لتطوير عملك وتحقيق نجاح باهر؟ تواصل معنا اليوم 
-            ودعنا نساعدك في بناء استراتيجية تسويقية ناجحة
+            اكتب لنا نوع مشروعك وما تريد تحقيقه، ونرد عليك عبر واتساب خلال ساعات العمل
+            بالباقة والميزانية الإعلانية المناسبة لك
           </p>
         </motion.div>
 
@@ -154,10 +154,10 @@ const ContactForm = () => {
           {/* Contact Form */}
           <motion.div
             className="bg-white rounded-3xl p-8 shadow-xl"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true, margin: '0px 0px 120px 0px' }}
           >
             <h3 className="text-2xl font-display font-bold mb-6 gradient-text">
               أرسل لنا رسالة
@@ -294,10 +294,10 @@ const ContactForm = () => {
           {/* Contact Info */}
           <motion.div
             className="space-y-8"
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            viewport={{ once: true, margin: '0px 0px 120px 0px' }}
           >
             {/* Contact Details */}
             <div className="bg-white rounded-3xl p-8 shadow-xl">

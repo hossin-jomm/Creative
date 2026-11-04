@@ -94,9 +94,9 @@ const PortfolioContent = () => {
   const animationProps = prefersReducedMotion
     ? {}
     : {
-        initial: { opacity: 0, y: 30 },
+        initial: { opacity: 0, y: 16 },
         whileInView: { opacity: 1, y: 0 },
-        transition: { duration: 0.8 },
+        transition: { duration: 0.4 },
         viewport: { once: true }
       }
       
@@ -174,10 +174,10 @@ const PortfolioContent = () => {
             {/* Category Filter */}
             <motion.div
               className="flex flex-wrap justify-center gap-4 mb-12"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              viewport={{ once: true, margin: '0px 0px 120px 0px' }}
             >
               {categories.map((category) => (
                 <button
@@ -220,8 +220,8 @@ const PortfolioContent = () => {
                     key={item.id}
                     className="group cursor-pointer"
                     variants={prefersReducedMotion ? {} : {
-                      hidden: { opacity: 0, y: 20 },
-                      show: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+                      hidden: { opacity: 0, y: 16 },
+                      show: { opacity: 1, y: 0, transition: { duration: 0.4 } }
                     }}
                     onClick={() => openLightbox(item)}
                   >
@@ -271,16 +271,16 @@ const PortfolioContent = () => {
             {/* CTA Section */}
             <motion.div
               className="text-center mt-16"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
+              transition={{ duration: 0.4 }}
+              viewport={{ once: true, margin: '0px 0px 120px 0px' }}
             >
               <p className="text-lg text-gray-600 mb-6">
                 هل تريد أن يكون مشروعك التالي في معرض أعمالنا؟
               </p>
               <a href="#contact" className="btn-primary text-lg px-8 py-4">
-                ابدأ مشروعك الآن
+                اطلب تصميماً لمشروعك
               </a>
             </motion.div>
           </>
