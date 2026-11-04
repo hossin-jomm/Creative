@@ -1,0 +1,39 @@
+@font-face { font-family: 'Cairo'; font-weight: 400; src: url('../../../public/Cairo/static/Cairo-Regular.ttf'); }
+@font-face { font-family: 'Cairo'; font-weight: 600; src: url('../../../public/Cairo/static/Cairo-SemiBold.ttf'); }
+@font-face { font-family: 'Cairo'; font-weight: 700; src: url('../../../public/Cairo/static/Cairo-Bold.ttf'); }
+@font-face { font-family: 'Cairo'; font-weight: 900; src: url('../../../public/Cairo/static/Cairo-Black.ttf'); }
+
+/* ألوان الهوية مأخوذة من شعار Ai Creative */
+:root {
+  --navy: #12313f;
+  --deep: #1c4a5c;
+  --teal: #167989;
+  --cyan: #179db0;
+  --aqua: #3cc5d3;
+  --mist: #e8f6f8;
+  --grey: #d1d3d4;
+  --ink: #0f2530;
+  --accent: #f5b941;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { overflow: hidden; }
+body { font-family: 'Cairo', sans-serif; direction: rtl; position: relative; line-height: 1.35; }
+
+.bg-dark { background: radial-gradient(circle at 80% 10%, #1f6378 0%, var(--navy) 55%, #0b1f28 100%); color: #fff; }
+.bg-light { background: linear-gradient(180deg, #f4fbfc 0%, var(--mist) 100%); color: var(--ink); }
+.bg-brand { background: linear-gradient(135deg, var(--teal) 0%, var(--cyan) 60%, var(--aqua) 100%); color: #fff; }
+
+/* شريط سفلي ثابت في كل المنشورات */
+.post-footer { position: absolute; left: 64px; right: 64px; bottom: 48px; display: flex; align-items: center; justify-content: space-between; font-size: 26px; font-weight: 700; }
+.post-footer img { height: 54px; }
+.post-footer .wa { direction: ltr; display: flex; align-items: center; gap: 10px; }
+.post-footer .wa svg { width: 32px; height: 32px; }
+.bg-light .post-footer { color: var(--teal); }
+
+.kicker { display: inline-block; font-size: 30px; font-weight: 800; padding: 6px 24px; border-radius: 999px; background: rgba(60,197,211,.18); color: var(--aqua); }
+.bg-light .kicker { background: #d3eef2; color: var(--teal); }
+h1.title { font-size: 92px; font-weight: 900; line-height: 1.12; margin-top: 22px; }
+.hl { color: var(--aqua); }
+.bg-light .hl { color: var(--teal); }
+.lead { font-size: 36px; font-weight: 600; margin-top: 22px; line-height: 1.5; opacity: .92; }
