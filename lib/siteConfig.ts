@@ -1,7 +1,7 @@
 // بيانات التواصل في مكان واحد. أي رابط فارغ لا يظهر في الموقع.
 // لإضافة حساب: ضع الرابط الكامل، مثل 'https://facebook.com/aicreative.sy'
 
-// wa.me يقبل الأرقام فقط مع رمز الدولة ومن دون الصفر المحلي: 963994661991 وليس +963 0994661991
+// wa.me يقبل الأرقام فقط مع رمز الدولة ومن دون الصفر المحلي: 963964667678 وليس +963 0964667678
 export function normalizeWhatsAppNumber(raw: string): string {
   const digits = raw.replace(/\D/g, '')
   if (digits.startsWith('9630')) return '963' + digits.slice(4)
@@ -9,11 +9,14 @@ export function normalizeWhatsAppNumber(raw: string): string {
   return digits
 }
 
-export const WHATSAPP_NUMBER = normalizeWhatsAppNumber(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '963994661991')
+// رقم الوكالة: 0964667678. هذا الملف هو المصدر الوحيد للرقم في الموقع،
+// عمداً لا نقرأه من متغيرات Vercel حتى لا تعيد قيمة قديمة هناك الرقمَ القديم.
+export const PHONE_LOCAL = '0964667678'
+export const WHATSAPP_NUMBER = normalizeWhatsAppNumber(PHONE_LOCAL)
 
 export const siteConfig = {
-  phoneDisplay: '+963 994 661 991',
-  phoneLink: 'tel:+963994661991',
+  phoneDisplay: '+963 964 667 678',
+  phoneLink: `tel:+${WHATSAPP_NUMBER}`,
   // ضع بريد الوكالة هنا عندما يجهز، وسيظهر تلقائياً
   email: '',
   city: 'حلب، سوريا',

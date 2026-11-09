@@ -9,7 +9,6 @@
   "env": {
     "NEXT_PUBLIC_APP_NAME": "Ai Creative",
     "NEXT_PUBLIC_APP_URL": "https://creative-two-azure.vercel.app",
-    "NEXT_PUBLIC_WHATSAPP_NUMBER": "963994661991",
     "NEXT_PUBLIC_WHATSAPP_MESSAGE": "مرحباً، أريد الاستفسار عن خدماتكم"
   }
 }

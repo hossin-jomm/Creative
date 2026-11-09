@@ -29,7 +29,7 @@ def page(name: str, theme: str, css: str, body: str) -> None:
 </style></head>
 <body class="{theme}">
 {body}
-  <div class="post-footer"><img src="{logo}" alt=""><div class="wa">{WA}<span>+963 994 661 991</span></div></div>
+  <div class="post-footer"><img src="{logo}" alt=""><div class="wa">{WA}<span>+963 964 667 678</span></div></div>
 </body></html>
 '''
     (DESIGNS / f'{name}.html').write_text(html, encoding='utf-8')
