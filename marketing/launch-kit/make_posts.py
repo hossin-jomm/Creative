@@ -43,9 +43,9 @@ page('c1-intro', 'bg-dark', '''
   .pills div { font-size:32px; font-weight:800; padding:10px 30px; border-radius:16px; background:rgba(60,197,211,.14); border:1px solid rgba(60,197,211,.45); }
 ''', '''  <div class="glow"></div><img class="mark" src="../assets/mark-white.png" alt="">
   <div class="wrap">
-    <div class="kicker">أهلاً فيكم بـ Ai Creative</div>
-    <h1 class="title">نجيب لمحلك <span class="hl">زبائن</span><br>مو بس لايكات</h1>
-    <p class="lead">وكالة تسويق رقمي من حلب، شغلتنا إنو إعلانك يتحول لرسائل وطلبات حقيقية.</p>
+    <div class="kicker">أهلاً بكم في Ai Creative</div>
+    <h1 class="title">نُكبّر مشروعك<br><span class="hl">ونكبر معك</span></h1>
+    <p class="lead">وكالة تسويق رقمي في حلب، نحوّل إعلانك إلى رسائل وطلبات حقيقية، لا مجرد إعجابات.</p>
     <div class="pills"><div>إعلانات ممولة</div><div>إدارة محتوى</div><div>تدريب</div></div>
   </div>''')
 
@@ -56,12 +56,12 @@ page('c2-services', 'bg-light', '''
   .card h3 { font-size:42px; font-weight:900; }
   .card p { font-size:28px; font-weight:600; color:#3d5a66; margin-top:4px; }
 ''', '''  <div class="wrap">
-    <div class="kicker">شو منقدّم؟</div>
+    <div class="kicker">ماذا نقدّم؟</div>
     <h1 class="title">3 خدمات<br><span class="hl">هدفها البيع</span></h1>
     <div class="cards">
       <div class="card"><div class="num">1</div><div><h3>الإعلانات الممولة</h3><p>حملات فيسبوك وإنستغرام بهدف رسائل وطلبات، مع تقرير أسبوعي</p></div></div>
-      <div class="card"><div class="num">2</div><div><h3>إدارة المحتوى</h3><p>خطة شهرية، تصاميم، ريلز، وكتابة منشورات بتشبه محلك</p></div></div>
-      <div class="card"><div class="num">3</div><div><h3>التدريب</h3><p>تعلّم تدير إعلاناتك بنفسك من الصفر لأول مبيعة</p></div></div>
+      <div class="card"><div class="num">2</div><div><h3>إدارة المحتوى</h3><p>خطة شهرية وتصاميم وريلز ومنشورات تعبّر عن مشروعك</p></div></div>
+      <div class="card"><div class="num">3</div><div><h3>التدريب</h3><p>تعلّم إدارة إعلاناتك بنفسك من الصفر حتى أول مبيعة</p></div></div>
     </div>
   </div>''')
 
@@ -72,13 +72,13 @@ page('c3-process', 'bg-dark', '''
   .step h3 { font-size:40px; font-weight:900; }
   .step p { font-size:28px; font-weight:600; color:#bfe3e9; }
 ''', '''  <div class="wrap">
-    <div class="kicker">كيف منشتغل معك؟</div>
+    <div class="kicker">كيف نعمل معك؟</div>
     <h1 class="title">4 خطوات <span class="hl">واضحة</span></h1>
     <div class="steps">
-      <div class="step"><b>1</b><div><h3>منفهم محلك</h3><p>شو بتبيع، مين زبونك، وشو عم يعمل منافسك</p></div></div>
-      <div class="step"><b>2</b><div><h3>منحط خطة</h3><p>هدف واحد واضح، جمهور، ميزانية، ومحتوى</p></div></div>
-      <div class="step"><b>3</b><div><h3>منطلق ومنجرّب</h3><p>أكتر من إعلان، ومنخلّي الأفضل يكمّل</p></div></div>
-      <div class="step"><b>4</b><div><h3>منقيس كل أسبوع</h3><p>تقرير بالأرقام: كم رسالة، وبأي تكلفة</p></div></div>
+      <div class="step"><b>1</b><div><h3>نفهم مشروعك</h3><p>ماذا تبيع، ومن هو زبونك، وماذا يفعل منافسك</p></div></div>
+      <div class="step"><b>2</b><div><h3>نضع خطة</h3><p>هدف واضح، وجمهور، وميزانية، ومحتوى</p></div></div>
+      <div class="step"><b>3</b><div><h3>نطلق ونجرّب</h3><p>أكثر من إعلان، ونستمر بالأفضل أداءً</p></div></div>
+      <div class="step"><b>4</b><div><h3>نقيس كل أسبوع</h3><p>تقرير بالأرقام: عدد الرسائل وتكلفة كل رسالة</p></div></div>
     </div>
   </div>''')
 
@@ -89,13 +89,13 @@ page('c4-mistakes', 'bg-light', '''
   li small { display:block; font-size:24px; font-weight:600; color:#4b6672; }
 ''', '''  <div class="wrap">
     <div class="kicker">نصيحة اليوم</div>
-    <h1 class="title">5 أخطاء <span class="hl">بتحرق</span><br>ميزانية إعلانك</h1>
+    <h1 class="title">5 أخطاء <span class="hl">تحرق</span><br>ميزانية إعلانك</h1>
     <ol>
-      <li><div>تكبس "ترويج" وتمشي<small>بدل مدير الإعلانات وأهدافه</small></div></li>
-      <li><div>تستهدف كل سوريا<small>وزبونك بحيّك أو مدينتك بس</small></div></li>
-      <li><div>تختار هدف "تفاعل"<small>وانت بدك رسائل وطلبات</small></div></li>
-      <li><div>إعلان واحد بس<small>بدون ما تجرّب صورة وفيديو ونص</small></div></li>
-      <li><div>الرد على الرسائل متأخر<small>الزبون اللي ما انرد عليه راح لغيرك</small></div></li>
+      <li><div>الاكتفاء بزر "ترويج"<small>بدل مدير الإعلانات وأهدافه</small></div></li>
+      <li><div>استهداف سوريا كلها<small>وزبونك في مدينتك أو حيّك فقط</small></div></li>
+      <li><div>اختيار هدف "التفاعل"<small>وأنت تريد رسائل وطلبات</small></div></li>
+      <li><div>إعلان واحد فقط<small>دون تجربة صورة وفيديو ونص مختلف</small></div></li>
+      <li><div>التأخر في الرد على الرسائل<small>الزبون الذي لا يجد رداً يذهب لغيرك</small></div></li>
     </ol>
   </div>''')
 
@@ -110,13 +110,13 @@ page('c5-boost-vs-ads', 'bg-dark', '''
   .good p::before { content:'✓'; color:#fff; }
   .verdict { margin-top:40px; font-size:34px; font-weight:800; text-align:center; color:#cfeff3; }
 ''', '''  <div class="wrap">
-    <div class="kicker">سؤال بيتكرر كتير</div>
-    <h1 class="title">زر "ترويج"<br>ولّا <span class="hl">مدير الإعلانات</span>؟</h1>
+    <div class="kicker">سؤال يتكرر كثيراً</div>
+    <h1 class="title">زر "ترويج"<br>أم <span class="hl">مدير الإعلانات</span>؟</h1>
     <div class="cols">
-      <div class="col bad"><h3>زر ترويج</h3><p>أهداف محدودة</p><p>استهداف عام</p><p>صعب تقارن بين الإعلانات</p><p>النتيجة غالباً لايكات</p></div>
-      <div class="col good"><h3>مدير الإعلانات</h3><p>هدف رسائل أو مبيعات</p><p>استهداف دقيق</p><p>تجربة أكتر من إعلان</p><p>أرقام واضحة لكل دولار</p></div>
+      <div class="col bad"><h3>زر ترويج</h3><p>أهداف محدودة</p><p>استهداف عام</p><p>صعوبة المقارنة بين الإعلانات</p><p>النتيجة غالباً إعجابات</p></div>
+      <div class="col good"><h3>مدير الإعلانات</h3><p>هدف رسائل أو مبيعات</p><p>استهداف دقيق</p><p>تجربة أكثر من إعلان</p><p>أرقام واضحة لكل دولار</p></div>
     </div>
-    <div class="verdict">بدك زبائن؟ ابدأ من مدير الإعلانات</div>
+    <div class="verdict">تريد زبائن؟ ابدأ من مدير الإعلانات</div>
   </div>''')
 
 page('c6-promises', 'bg-light', '''
@@ -125,13 +125,13 @@ page('c6-promises', 'bg-light', '''
   .item b { display:block; font-size:58px; font-weight:900; color:var(--teal); line-height:1.1; }
   .item span { font-size:29px; font-weight:700; color:#33515d; }
 ''', '''  <div class="wrap">
-    <div class="kicker">بدون وعود خيالية</div>
+    <div class="kicker">دون وعود خيالية</div>
     <h1 class="title">التزاماتنا <span class="hl">معك</span></h1>
-    <p class="lead">ما منوعدك بـ"مبيعات خارقة". منوعدك بشغل واضح ومكتوب بالعقد:</p>
+    <p class="lead">لا نعدك بـ"مبيعات خارقة". نعدك بعمل واضح ومكتوب في العقد:</p>
     <div class="grid">
       <div class="item"><b>أسبوعياً</b><span>تقرير بنتائج حملتك</span></div>
       <div class="item"><b>2</b><span>تعديلات مجانية لكل تصميم</span></div>
-      <div class="item"><b>15 يوم</b><span>إشعار مسبق بس لإلغاء العقد</span></div>
+      <div class="item"><b>15 يوم</b><span>إشعار مسبق فقط لإلغاء العقد</span></div>
       <div class="item"><b>سرية</b><span>بياناتك وحساباتك محمية</span></div>
     </div>
   </div>''')
@@ -156,7 +156,7 @@ page('c7-ads-package', 'bg-brand', '''
       <li>كتابة نصوص الإعلانات</li>
       <li>تقرير أسبوعي بتكلفة كل رسالة</li>
     </ul>
-    <div class="note">ميزانية الإعلان منفصلة وبتندفع للمنصة مباشرة</div>
+    <div class="note">ميزانية الإعلان منفصلة وتُدفع للمنصة مباشرة</div>
   </div>''')
 
 page('c8-workshop', 'bg-light', '''
@@ -164,18 +164,18 @@ page('c8-workshop', 'bg-light', '''
   .topics { margin-top:36px; display:grid; grid-template-columns:1fr 1fr; gap:18px; }
   .topics div { background:#fff; border-radius:22px; padding:22px 24px; font-size:29px; font-weight:800; box-shadow:0 8px 24px rgba(22,121,137,.08); }
   .topics small { display:block; font-size:22px; font-weight:700; color:var(--teal); }
-  h1.title { font-size:84px; }
+  h1.title { font-size:72px; }
 ''', '''  <div class="wrap">
     <div class="kicker">قريباً في حلب</div>
-    <h1 class="title">ورشة إعلانات فيسبوك<br><span class="hl">من الصفر لأول مبيعة</span></h1>
+    <h1 class="title">ورشة إعلانات فيسبوك<br><span class="hl">من الصفر حتى أول مبيعة</span></h1>
     <div class="badge">تطبيق عملي على حسابك</div>
     <div class="topics">
-      <div><small>الجلسة 1</small>مدير الإعلانات من جوّا</div>
+      <div><small>الجلسة 1</small>مدير الإعلانات من الداخل</div>
       <div><small>الجلسة 2</small>الجمهور والاستهداف</div>
-      <div><small>الجلسة 3</small>إعلان بيجيب رسائل</div>
+      <div><small>الجلسة 3</small>إعلان يجلب رسائل</div>
       <div><small>الجلسة 4</small>قراءة الأرقام والتحسين</div>
     </div>
-    <p class="lead" style="margin-top:34px;font-weight:800">المقاعد محدودة. ابعتلنا "ورشة" على واتساب لنحجزلك مكان.</p>
+    <p class="lead" style="margin-top:34px;font-weight:800">المقاعد محدودة. أرسل "ورشة" على واتساب لنحجز لك مكاناً.</p>
   </div>''')
 
 page('c9-free-review', 'bg-dark', '''
@@ -188,10 +188,10 @@ page('c9-free-review', 'bg-dark', '''
 ''', '''  <div class="glow"></div>
   <div class="wrap">
     <div class="kicker">عرض الإطلاق</div>
-    <h1 class="title">إعلاناتك ما عم<br>تجيب <span class="hl">نتيجة</span>؟</h1>
-    <p class="lead">ابعتلنا رابط صفحتك، ومنرجعلك بـ3 ملاحظات عملية مجاناً:</p>
-    <div class="box"><p>شو اللي عم يضيّع ميزانيتك</p><p>مين لازم تستهدف</p><p>شو تغيّر بإعلانك الجاي</p></div>
-    <div class="cta">''' + WA + '''ابعت "تحليل" على واتساب</div>
+    <h1 class="title">إعلاناتك لا تجلب<br><span class="hl">نتائج</span>؟</h1>
+    <p class="lead">أرسل لنا رابط صفحتك، ونرسل لك 3 ملاحظات عملية مجاناً:</p>
+    <div class="box"><p>ما الذي يهدر ميزانيتك</p><p>من يجب أن تستهدف</p><p>ماذا تغيّر في إعلانك القادم</p></div>
+    <div class="cta">''' + WA + '''أرسل "تحليل" على واتساب</div>
   </div>''')
 
 print('posts generated')
