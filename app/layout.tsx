@@ -2,23 +2,16 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Header from '@/components/Header'
 import WhatsAppFloat from '@/components/WhatsAppFloat'
-import { Alexandria, IBM_Plex_Sans_Arabic } from 'next/font/google'
+import { Tajawal } from 'next/font/google'
 import { SITE_URL } from '@/lib/siteUrl'
 
-// خط النصوص: مقروء جداً على الجوال
-const plex = IBM_Plex_Sans_Arabic({
+// خط الهوية الموحد Tajawal: نفس خط تصاميم السوشال ميديا (marketing/launch-kit)
+// يُحمَّل مرة واحدة، ويُستخدم للعناوين والنصوص عبر --font-body و --font-display في globals.css
+const tajawal = Tajawal({
   subsets: ['arabic', 'latin'],
   display: 'swap',
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-body',
-})
-
-// خط العناوين: عربي هندسي عريض يناسب هوية تقنية
-const alexandria = Alexandria({
-  subsets: ['arabic', 'latin'],
-  display: 'swap',
-  weight: ['500', '600', '700', '800'],
-  variable: '--font-display',
+  weight: ['400', '500', '700', '800', '900'],
+  variable: '--font-tajawal',
 })
 
 export const metadata: Metadata = {
@@ -43,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ar" dir="rtl" className={`${plex.variable} ${alexandria.variable}`}>
+    <html lang="ar" dir="rtl" className={tajawal.variable}>
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
       </head>
