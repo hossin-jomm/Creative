@@ -1,7 +1,9 @@
-@font-face { font-family: 'Cairo'; font-weight: 400; src: url('../../../public/Cairo/static/Cairo-Regular.ttf'); }
-@font-face { font-family: 'Cairo'; font-weight: 600; src: url('../../../public/Cairo/static/Cairo-SemiBold.ttf'); }
-@font-face { font-family: 'Cairo'; font-weight: 700; src: url('../../../public/Cairo/static/Cairo-Bold.ttf'); }
-@font-face { font-family: 'Cairo'; font-weight: 900; src: url('../../../public/Cairo/static/Cairo-Black.ttf'); }
+/* خط الهوية: Tajawal (Google Fonts، رخصة OFL مجانية للاستخدام التجاري) */
+@font-face { font-family: 'Tajawal'; font-weight: 400; src: url('../fonts/Tajawal-Regular.ttf'); }
+@font-face { font-family: 'Tajawal'; font-weight: 500 600; src: url('../fonts/Tajawal-Medium.ttf'); }
+@font-face { font-family: 'Tajawal'; font-weight: 700; src: url('../fonts/Tajawal-Bold.ttf'); }
+@font-face { font-family: 'Tajawal'; font-weight: 800; src: url('../fonts/Tajawal-ExtraBold.ttf'); }
+@font-face { font-family: 'Tajawal'; font-weight: 900; src: url('../fonts/Tajawal-Black.ttf'); }
 
 /* ألوان الهوية مأخوذة من شعار Ai Creative */
 :root {
@@ -18,7 +20,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { overflow: hidden; }
-body { font-family: 'Cairo', sans-serif; direction: rtl; position: relative; line-height: 1.35; }
+body { font-family: 'Tajawal', sans-serif; direction: rtl; position: relative; line-height: 1.4; }
 
 .bg-dark { background: radial-gradient(circle at 80% 10%, #1f6378 0%, var(--navy) 55%, #0b1f28 100%); color: #fff; }
 .bg-light { background: linear-gradient(180deg, #f4fbfc 0%, var(--mist) 100%); color: var(--ink); }
