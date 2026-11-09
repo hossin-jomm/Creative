@@ -53,7 +53,7 @@ export const isValidUrl = (url: string): boolean => {
 
 // التحقق من صحة رقم الهاتف (يمكن تعديله حسب تنسيق الهاتف المطلوب)
 export const isValidPhoneNumber = (phone: string): boolean => {
-  // يقبل الأرقام المحلية والدولية مع المسافات والشرطات والأقواس، مثل: 0994 661 991 أو +963 994 661 991
+  // يقبل الأرقام المحلية والدولية مع المسافات والشرطات والأقواس، مثل: 0964 667 678 أو +963 964 667 678
   if (!/^[+\d\s().-]+$/.test(phone)) return false;
   const digits = phone.replace(/[\s().-]/g, '');
   return /^\+?\d{7,15}$/.test(digits);
