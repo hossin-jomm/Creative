@@ -29,11 +29,10 @@ const HeroContent = () => {
           transition={{ duration: 0.4 }}
           className="w-full md:w-4/5 lg:w-3/4 mx-auto"
         >
-          <h1 className="text-[32px] sm:text-[40px] md:text-[52px] lg:text-[60px] font-display font-extrabold text-white mb-8 leading-[1.35] mt-10 md:mt-20">
-            زبائن أكثر لمشروعك
-            <br />
-            <span className="bg-gradient-to-l from-fuchsia-300 to-sky-300 bg-clip-text text-transparent">
-              من إعلانات فيسبوك وإنستغرام
+          <h1 className="text-[30px] sm:text-[44px] md:text-[56px] lg:text-[64px] font-display font-extrabold text-white mb-8 leading-[1.3] mt-10 md:mt-20">
+            <span className="block">نُكبّر مشروعك… <span className="whitespace-nowrap">ونكبر معك</span></span>
+            <span className="block mt-4 text-[20px] sm:text-[26px] md:text-[32px] lg:text-[36px] font-bold leading-[1.5] bg-gradient-to-l from-fuchsia-300 to-sky-300 bg-clip-text text-transparent">
+              إعلانات تجلب لك زبائن حقيقيين، لا مجرد إعجابات
             </span>
           </h1>
           
@@ -54,13 +53,13 @@ const HeroContent = () => {
             transition={{ duration: 0.4, delay: 0.4 }}
           >
             <a
-              href={whatsappLink('السلام عليكم\nعندي فضول أن أعرف أكثر!\nكيف بتقدر حلول AI Creative الإبداعية تضيف قيمة لمشروع مثل [اكتب نوع المشروع هنا]؟')}
+              href={whatsappLink('السلام عليكم، أريد تحليلاً مجانياً لصفحتي.\nنوع مشروعي: ')}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-base md:text-lg px-8 py-4 rounded-xl shadow-lg cursor-pointer"
             >
               <i className="fab fa-whatsapp text-xl" aria-hidden="true"></i>
-              <span>احصل على استشارة مجانية</span>
+              <span>اطلب تحليلاً مجانياً لصفحتك</span>
             </a>
             
             <a
@@ -94,7 +93,7 @@ const HeroContent = () => {
           </div>
           <div className="text-center p-4 bg-white/5 rounded-xl backdrop-blur-sm hover:bg-white/10 transition-all">
             <div className="text-3xl md:text-4xl font-bold text-white mb-3 bg-gradient-to-l from-fuchsia-300 to-sky-300 bg-clip-text text-transparent">مجاناً</div>
-            <div className="text-base md:text-lg text-white/80">استشارة أولى لصفحتك</div>
+            <div className="text-base md:text-lg text-white/80">تحليل أول لصفحتك</div>
           </div>
         </motion.div>
       </div>
