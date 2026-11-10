@@ -1,11 +1,13 @@
-@font-face { font-family: 'Cairo'; font-weight: 400; src: url('../../public/Cairo/static/Cairo-Regular.ttf'); }
-@font-face { font-family: 'Cairo'; font-weight: 600; src: url('../../public/Cairo/static/Cairo-SemiBold.ttf'); }
-@font-face { font-family: 'Cairo'; font-weight: 700; src: url('../../public/Cairo/static/Cairo-Bold.ttf'); }
-@font-face { font-family: 'Cairo'; font-weight: 900; src: url('../../public/Cairo/static/Cairo-Black.ttf'); }
+/* خط الهوية Tajawal (نفس ملفات حقيبة الإطلاق) */
+@font-face { font-family: 'Tajawal'; font-weight: 400; src: url('../../marketing/launch-kit/fonts/Tajawal-Regular.ttf'); }
+@font-face { font-family: 'Tajawal'; font-weight: 500 600; src: url('../../marketing/launch-kit/fonts/Tajawal-Medium.ttf'); }
+@font-face { font-family: 'Tajawal'; font-weight: 700; src: url('../../marketing/launch-kit/fonts/Tajawal-Bold.ttf'); }
+@font-face { font-family: 'Tajawal'; font-weight: 800; src: url('../../marketing/launch-kit/fonts/Tajawal-ExtraBold.ttf'); }
+@font-face { font-family: 'Tajawal'; font-weight: 900; src: url('../../marketing/launch-kit/fonts/Tajawal-Black.ttf'); }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { width: 1080px; height: 1080px; overflow: hidden; }
-body { font-family: 'Cairo', sans-serif; direction: rtl; position: relative; line-height: 1.35; }
+body { font-family: 'Tajawal', sans-serif; direction: rtl; position: relative; line-height: 1.4; }
 
 /* شارة الصدق: كل عمل في المعرض مكتوب عليه أنه نموذج تجريبي */
 .sample-badge {

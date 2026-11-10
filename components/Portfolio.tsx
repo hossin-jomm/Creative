@@ -279,8 +279,13 @@ const PortfolioContent = () => {
               <p className="text-lg text-gray-600 mb-6">
                 هل تريد أن يكون مشروعك التالي في معرض أعمالنا؟
               </p>
-              <a href="#contact" className="btn-primary text-lg px-8 py-4">
-                اطلب تصميماً لمشروعك
+              <a
+                href={whatsappLink('السلام عليكم، أريد تحليلاً مجانياً لصفحتي.\nنوع مشروعي: ')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-lg px-8 py-4"
+              >
+                اطلب تحليلاً مجانياً لصفحتك
               </a>
             </motion.div>
           </>
