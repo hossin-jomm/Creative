@@ -6,10 +6,8 @@ import {
   Users, 
   GraduationCap, 
   Palette, 
-  Video, 
-  BarChart3,
   Target,
-  Smartphone
+  Search
 } from 'lucide-react'
 import ErrorBoundary from './ErrorBoundary'
 import SectionDivider from './SectionDivider'
@@ -20,44 +18,30 @@ const ServicesContent = () => {
   const services = [
     {
       icon: Megaphone,
-      title: 'الحملات الإعلانية المدفوعة',
-      description: 'إنشاء وإدارة حملات إعلانية احترافية على جميع المنصات مع دراسة مفصلة للنتائج وتحليل الأداء',
-      features: ['Facebook Ads', 'Google Ads', 'Instagram Ads', 'تحليل النتائج'],
+      title: 'الإعلانات الممولة',
+      description: 'نصمّم إعلانك ونديره على فيسبوك وإنستغرام بهدف الرسائل والطلبات، ونرسل لك تقريراً أسبوعياً بتكلفة كل رسالة',
+      features: ['Facebook Ads', 'Instagram Ads', 'ضبط الاستهداف', 'تقرير أسبوعي'],
       color: 'from-secondary-600 to-secondary-700'
     },
     {
       icon: Users,
-      title: 'إدارة السوشال ميديا',
-      description: 'إدارة شاملة لحساباتك على منصات التواصل الاجتماعي مع محتوى إبداعي يجذب جمهورك المستهدف',
-      features: ['إنشاء المحتوى', 'جدولة المنشورات', 'التفاعل مع الجمهور', 'تقارير الأداء'],
+      title: 'إدارة المحتوى',
+      description: 'خطة شهرية وتصاميم وريلز ومنشورات تعبّر عن مشروعك',
+      features: ['خطة شهرية', 'تصاميم ومنشورات', 'ريلز', 'جدولة النشر'],
       color: 'from-secondary-600 to-secondary-700'
     },
     {
       icon: GraduationCap,
-      title: 'التدريب الاحترافي',
-      description: 'برامج تدريبية متخصصة في التسويق الرقمي لتأهيل الشباب وخلق فرص عمل حقيقية',
-      features: ['Facebook Ads', 'Google Ads', 'TikTok Ads', 'تطبيق عملي'],
+      title: 'التدريب',
+      description: 'ورشة تطبيقية تتعلم فيها إدارة إعلاناتك بنفسك، من الصفر حتى أول مبيعة',
+      features: ['مدير الإعلانات', 'الجمهور والاستهداف', 'إعلان يجلب رسائل', 'قراءة الأرقام'],
       color: 'from-secondary-600 to-secondary-700'
     },
     {
       icon: Palette,
-      title: 'تصميم الهوية البصرية',
-      description: 'تصميم هوية بصرية متكاملة تعكس شخصية علامتك التجارية وتميزها عن المنافسين',
-      features: ['تصميم الشعار', 'الألوان والخطوط', 'دليل الهوية', 'تطبيقات الهوية'],
-      color: 'from-secondary-600 to-secondary-700'
-    },
-    {
-      icon: Video,
-      title: 'موشن جرافيك وإنتاج الفيديو',
-      description: 'إنتاج فيديوهات احترافية وموشن جرافيك مبهر يحكي قصة علامتك التجارية بطريقة جذابة',
-      features: ['موشن جرافيك', 'فيديوهات ترويجية', 'أنيميشن 2D/3D', 'مونتاج احترافي'],
-      color: 'from-secondary-600 to-secondary-700'
-    },
-    {
-      icon: BarChart3,
-      title: 'تحليل البيانات والتقارير',
-      description: 'تحليل شامل لأداء حملاتك التسويقية مع تقارير مفصلة وتوصيات لتحسين النتائج',
-      features: ['Google Analytics', 'تقارير مخصصة', 'تحليل المنافسين', 'KPIs'],
+      title: 'الهوية البصرية',
+      description: 'شعار وألوان وخطوط تعطي مشروعك شكلاً واضحاً ومميزاً',
+      features: ['الشعار', 'الألوان والخطوط', 'دليل الهوية', 'تصاميم السوشال ميديا'],
       color: 'from-secondary-600 to-secondary-700'
     }
   ]
@@ -86,7 +70,7 @@ const ServicesContent = () => {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {services.map((service, index) => {
             const Icon = service.icon
             return (
@@ -159,26 +143,26 @@ const ServicesContent = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="text-center p-6 bg-white rounded-xl shadow-sm">
               <Target className="w-12 h-12 text-secondary-600 mx-auto mb-4" />
-              <h4 className="font-semibold mb-2">استراتيجيات مخصصة</h4>
-              <p className="text-sm text-gray-600">خطط تسويقية مصممة خصيصاً لعملك</p>
+              <h4 className="font-semibold mb-2">دراسة المنافسين</h4>
+              <p className="text-sm text-gray-600">ماذا يفعل منافسوك، وكيف تتميز عنهم</p>
             </div>
             
             <div className="text-center p-6 bg-white rounded-xl shadow-sm">
-              <Smartphone className="w-12 h-12 text-secondary-600 mx-auto mb-4" />
-              <p className="font-semibold mb-2">تطبيقات الجوال</p>
-              <p className="text-sm text-gray-600">تسويق التطبيقات وزيادة التحميلات</p>
+              <Search className="w-12 h-12 text-secondary-600 mx-auto mb-4" />
+              <h4 className="font-semibold mb-2">تحليل مجاني لصفحتك</h4>
+              <p className="text-sm text-gray-600">3 ملاحظات عملية خلال 48 ساعة</p>
             </div>
             
             <div className="text-center p-6 bg-white rounded-xl shadow-sm">
               <i className="fas fa-comments text-3xl text-secondary-600 mb-4"></i>
               <h4 className="font-semibold mb-2">تدريب البيع بالرسائل</h4>
-              <p className="text-sm text-gray-600">تعلم فن البيع عبر المحادثات</p>
+              <p className="text-sm text-gray-600">نعلّمك كيف تحوّل المحادثة إلى بيع</p>
             </div>
             
             <div className="text-center p-6 bg-white rounded-xl shadow-sm">
               <i className="fas fa-headset text-3xl text-secondary-600 mb-4"></i>
               <h4 className="font-semibold mb-2">خدمة ما بعد البيع</h4>
-              <p className="text-sm text-gray-600">دعم مستمر لضمان نجاحك</p>
+              <p className="text-sm text-gray-600">متابعة بعد انتهاء الحملة لنتأكد أن النتائج مستمرة</p>
             </div>
           </div>
         </motion.div>
